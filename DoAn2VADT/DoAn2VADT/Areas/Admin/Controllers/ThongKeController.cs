@@ -7,6 +7,7 @@ using System;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace DoAn2VADT.Areas.Admin.Controllers
 {
@@ -51,6 +52,36 @@ namespace DoAn2VADT.Areas.Admin.Controllers
             return View(orders);
         }
 
+        //// POST: ThongKe/Index (lọc theo khoảng thời gian)
+        //[HttpPost]
+        //public IActionResult Index(DateTime? from_date, DateTime? to_date)
+        //{
+        //    if (from_date == null || to_date == null)
+        //    {
+        //        ModelState.AddModelError(string.Empty, "Vui lòng nhập ngày hợp lệ.");
+        //        return View(new PagedList<Order>(Enumerable.Empty<Order>().AsQueryable(), 1, 8));
+        //    }
+
+        //    if (from_date > to_date)
+        //    {
+        //        ModelState.AddModelError(string.Empty, "Ngày bắt đầu phải nhỏ hơn ngày kết thúc.");
+        //        return View(new PagedList<Order>(Enumerable.Empty<Order>().AsQueryable(), 1, 8));
+        //    }
+
+        //    var ordersInRange = _context.Orders
+        //        .Where(b => b.CreatedAt >= from_date && b.CreatedAt <= to_date)
+        //        .ToList();
+
+        //    ViewBag.GetBills = ordersInRange;
+        //    ViewBag.GetQuantityOrder = ordersInRange.Count;
+        //    ViewBag.SumTotal = ordersInRange.Any() ? ordersInRange.Sum(b => b.Total ?? 0) : 0;
+        //    ViewBag.SumPrice = _context.Imports
+        //        .Where(b => b.CreatedAt >= from_date && b.CreatedAt <= to_date)
+        //        .Sum(b => b.Total ?? 0);
+        //    ViewBag.SumLoiNhuan = ViewBag.SumTotal - ViewBag.SumPrice;
+
+        //    return View(new PagedList<Order>(ordersInRange.AsQueryable(), 1, 8));
+        //}
         // POST: ThongKe/Index (lọc theo khoảng thời gian)
         [HttpPost]
         public IActionResult Index(DateTime? from_date, DateTime? to_date)
@@ -67,10 +98,13 @@ namespace DoAn2VADT.Areas.Admin.Controllers
                 return View(new PagedList<Order>(Enumerable.Empty<Order>().AsQueryable(), 1, 8));
             }
 
+            // Lọc danh sách đơn hàng
             var ordersInRange = _context.Orders
                 .Where(b => b.CreatedAt >= from_date && b.CreatedAt <= to_date)
+                .OrderByDescending(b => b.CreatedAt)
                 .ToList();
 
+            // Tính toán thống kê
             ViewBag.GetBills = ordersInRange;
             ViewBag.GetQuantityOrder = ordersInRange.Count;
             ViewBag.SumTotal = ordersInRange.Any() ? ordersInRange.Sum(b => b.Total ?? 0) : 0;
@@ -79,8 +113,29 @@ namespace DoAn2VADT.Areas.Admin.Controllers
                 .Sum(b => b.Total ?? 0);
             ViewBag.SumLoiNhuan = ViewBag.SumTotal - ViewBag.SumPrice;
 
+            // Tính dữ liệu biểu đồ theo tháng trong khoảng ngày lọc
+            var ordersByMonth = ordersInRange
+                .GroupBy(o => new { o.CreatedAt.Value.Year, o.CreatedAt.Value.Month })
+                .Select(g => new
+                {
+                    Month = g.Key.Month,
+                    Year = g.Key.Year,
+                    TotalRevenue = g.Sum(o => o.Total ?? 0),
+                    OrderCount = g.Count()
+                })
+                .OrderBy(x => x.Year).ThenBy(x => x.Month)
+                .ToList();
+
+            // Gửi dữ liệu biểu đồ cho view
+            ViewBag.ChartLabels = JsonConvert.SerializeObject(ordersByMonth.Select(x => $"{x.Month}/{x.Year}"));
+            ViewBag.ChartData = JsonConvert.SerializeObject(ordersByMonth.Select(x => x.TotalRevenue));
+            ViewBag.ChartOrderCounts = JsonConvert.SerializeObject(ordersByMonth.Select(x => x.OrderCount));
+
+            // Trả về view với dữ liệu đã phân trang
             return View(new PagedList<Order>(ordersInRange.AsQueryable(), 1, 8));
         }
+
+
 
         // GET: ThongKe/Details/5
         public async Task<IActionResult> Details(string id)

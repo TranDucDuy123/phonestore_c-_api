@@ -133,6 +133,83 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         // Dữ liệu cho biểu đồ
+        const filteredLabels = @Html.Raw(ViewBag.ChartLabels);
+        const filteredRevenues = @Html.Raw(ViewBag.ChartData);
+        const filteredOrderCounts = @Html.Raw(ViewBag.ChartOrderCounts);
+
+        // Tạo hoặc cập nhật biểu đồ
+        const ctx = document.getElementById('ordersChart').getContext('2d');
+        const ordersChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: filteredLabels,
+                datasets: [
+                    {
+                        label: 'Số lượng đơn hàng',
+                        data: filteredOrderCounts,
+                        borderWidth: 1,
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                    },
+                    {
+                        label: 'Tổng doanh thu (VNĐ)',
+                        data: filteredRevenues,
+                        borderWidth: 1,
+                        backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        type: 'line',
+                        tension: 0.4,
+                        yAxisID: 'y-axis-revenue',
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Tháng',
+                        },
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Số lượng đơn hàng',
+                        },
+                    },
+                    'y-axis-revenue': {
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'Doanh thu (VNĐ)',
+                        },
+                        grid: {
+                            drawOnChartArea: false,
+                        },
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                let value = context.raw;
+                                if (context.dataset.label === 'Tổng doanh thu (VNĐ)') {
+                                    return `${value.toLocaleString()} VNĐ`;
+                                }
+                                return value;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+}
+
+@* @section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Dữ liệu cho biểu đồ
         const monthlyOrderCounts = @Html.Raw(Json.Serialize(ViewBag.MonthlyOrderCounts));
         const monthlyRevenues = @Html.Raw(Json.Serialize(ViewBag.MonthlyRevenues));
         const monthLabels = @Html.Raw(Json.Serialize(ViewBag.MonthLabels));
@@ -204,4 +281,4 @@
             }
         });
     </script>
-}
+} *@
