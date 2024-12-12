@@ -3,10 +3,15 @@ using DoAn2VADT.Database;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PagedList.Core;
+using System;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
+using System.Threading.Tasks;
 
 namespace DoAn2VADT.Areas.Admin.Controllers
 {
+    [Area("Admin")]
+    //[Authorize(Roles = "Admin")]
     public class ThongKeController : Controller
     {
         private readonly AppDbContext _context;
@@ -16,51 +21,79 @@ namespace DoAn2VADT.Areas.Admin.Controllers
             _context = context;
         }
 
-        // GET: Orders
+        // GET: ThongKe/Index
         public IActionResult Index(int? page)
         {
-            var pageNumber = page == null || page <= 0 ? 1 : page.Value;
+            var pageNumber = page ?? 1;
             var pageSize = 8;
-            var lsOrder = _context.Orders
+
+            var ordersQuery = _context.Orders
                 .AsNoTracking()
                 .OrderByDescending(x => x.Id);
-            PagedList<Order> models = new PagedList<Order>(lsOrder, pageNumber, pageSize);
+
+            var orders = new PagedList<Order>(ordersQuery.AsQueryable(), pageNumber, pageSize);
+
+
+
+            // Dữ liệu biểu đồ
+            var monthlyOrders = _context.Orders
+                .GroupBy(o => o.CreatedAt.Value.Month)
+                .Select(g => new { Month = g.Key, OrderCount = g.Count(), TotalRevenue = g.Sum(o => o.Total ?? 0) })
+                .OrderBy(g => g.Month)
+                .ToList();
+
+            ViewBag.MonthlyOrderCounts = monthlyOrders.Select(m => m.OrderCount).ToArray();
+            ViewBag.MonthlyRevenues = monthlyOrders.Select(m => m.TotalRevenue).ToArray();
+            ViewBag.MonthLabels = monthlyOrders.Select(m => $"Tháng {m.Month}").ToArray();
+
+
             ViewBag.CurrentPage = pageNumber;
-            return View(models);
-        }
-        [HttpPost]
-        public IActionResult Index(DateTime from_date, DateTime to_date)
-        {
-            using (_context)
-            {
-                ViewBag.GetBills = (from b in _context.Orders where b.CreatedAt >= from_date && b.CreatedAt <= to_date == true select b).ToList();
-                ViewBag.GetQuantityOrder = (from b in _context.Orders where b.CreatedAt >= from_date && b.CreatedAt <= to_date == true select b.Id).Count();
-                ViewBag.SumToTal = (from b in _context.Orders where b.CreatedAt >= from_date && b.CreatedAt <= to_date == true select b.Total).Sum();
-                ViewBag.SumPrice = (from b in _context.Imports where b.CreatedAt >= from_date && b.CreatedAt <= to_date == true select b.Total).Sum();
-                ViewBag.SumLoiNhuan = ViewBag.SumToTal - ViewBag.SumPrice;
-                return View();
-            }
-        }
-        public IActionResult Filtter(int CatID = 0)
-        {
-            var url = $"/Order?CatID={CatID}";
-            if (CatID == 0)
-            {
-                url = $"/Order";
-            }
-            return Json(new { status = "success", redirectUrl = url });
+            return View(orders);
         }
 
-        // GET: Orders/Details/5
+        // POST: ThongKe/Index (lọc theo khoảng thời gian)
+        [HttpPost]
+        public IActionResult Index(DateTime? from_date, DateTime? to_date)
+        {
+            if (from_date == null || to_date == null)
+            {
+                ModelState.AddModelError(string.Empty, "Vui lòng nhập ngày hợp lệ.");
+                return View(new PagedList<Order>(Enumerable.Empty<Order>().AsQueryable(), 1, 8));
+            }
+
+            if (from_date > to_date)
+            {
+                ModelState.AddModelError(string.Empty, "Ngày bắt đầu phải nhỏ hơn ngày kết thúc.");
+                return View(new PagedList<Order>(Enumerable.Empty<Order>().AsQueryable(), 1, 8));
+            }
+
+            var ordersInRange = _context.Orders
+                .Where(b => b.CreatedAt >= from_date && b.CreatedAt <= to_date)
+                .ToList();
+
+            ViewBag.GetBills = ordersInRange;
+            ViewBag.GetQuantityOrder = ordersInRange.Count;
+            ViewBag.SumTotal = ordersInRange.Any() ? ordersInRange.Sum(b => b.Total ?? 0) : 0;
+            ViewBag.SumPrice = _context.Imports
+                .Where(b => b.CreatedAt >= from_date && b.CreatedAt <= to_date)
+                .Sum(b => b.Total ?? 0);
+            ViewBag.SumLoiNhuan = ViewBag.SumTotal - ViewBag.SumPrice;
+
+            return View(new PagedList<Order>(ordersInRange.AsQueryable(), 1, 8));
+        }
+
+        // GET: ThongKe/Details/5
         public async Task<IActionResult> Details(string id)
         {
-            if (id == null || _context.Orders == null)
+            if (string.IsNullOrEmpty(id))
             {
                 return NotFound();
             }
 
             var order = await _context.Orders
+                .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.Id.ToString() == id);
+
             if (order == null)
             {
                 return NotFound();
@@ -68,16 +101,19 @@ namespace DoAn2VADT.Areas.Admin.Controllers
 
             return View(order);
         }
-        // GET: Orders/Delete/5
+
+        // GET: ThongKe/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
-            if (id == null || _context.Orders == null)
+            if (string.IsNullOrEmpty(id))
             {
                 return NotFound();
             }
 
             var order = await _context.Orders
+                .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.Id.ToString() == id);
+
             if (order == null)
             {
                 return NotFound();
@@ -86,22 +122,19 @@ namespace DoAn2VADT.Areas.Admin.Controllers
             return View(order);
         }
 
-        // POST: Orders/Delete/5
+        // POST: ThongKe/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            if (_context.Orders == null)
-            {
-                return Problem("Entity set 'AppDbContext.Orders'  is null.");
-            }
             var order = await _context.Orders.FindAsync(id);
+
             if (order != null)
             {
                 _context.Orders.Remove(order);
+                await _context.SaveChangesAsync();
             }
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

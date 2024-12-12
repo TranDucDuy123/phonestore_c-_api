@@ -3,20 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4346563B-463D-4778-B120-C14AD28D558F}|DoAn2VADT\\DoAn2VADT.csproj|c:\\users\\dyly3\\source\\repos\\phonestore_c-_api\\doan2vadt\\doan2vadt\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4346563B-463D-4778-B120-C14AD28D558F}|DoAn2VADT\\DoAn2VADT.csproj|solutionrelative:doan2vadt\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4346563B-463D-4778-B120-C14AD28D558F}|DoAn2VADT\\DoAn2VADT.csproj|c:\\users\\dyly3\\source\\repos\\phonestore_c-_api\\doan2vadt\\doan2vadt\\areas\\admin\\views\\thongke\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4346563B-463D-4778-B120-C14AD28D558F}|DoAn2VADT\\DoAn2VADT.csproj|solutionrelative:doan2vadt\\areas\\admin\\views\\thongke\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4346563B-463D-4778-B120-C14AD28D558F}|DoAn2VADT\\DoAn2VADT.csproj|c:\\users\\dyly3\\source\\repos\\phonestore_c-_api\\doan2vadt\\doan2vadt\\views\\cart\\checkout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4346563B-463D-4778-B120-C14AD28D558F}|DoAn2VADT\\DoAn2VADT.csproj|solutionrelative:doan2vadt\\views\\cart\\checkout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{4346563B-463D-4778-B120-C14AD28D558F}|DoAn2VADT\\DoAn2VADT.csproj|c:\\users\\dyly3\\source\\repos\\phonestore_c-_api\\doan2vadt\\doan2vadt\\areas\\admin\\controllers\\thongkecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4346563B-463D-4778-B120-C14AD28D558F}|DoAn2VADT\\DoAn2VADT.csproj|solutionrelative:doan2vadt\\areas\\admin\\controllers\\thongkecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4346563B-463D-4778-B120-C14AD28D558F}|DoAn2VADT\\DoAn2VADT.csproj|c:\\users\\dyly3\\source\\repos\\phonestore_c-_api\\doan2vadt\\doan2vadt\\viewmodel\\checkout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4346563B-463D-4778-B120-C14AD28D558F}|DoAn2VADT\\DoAn2VADT.csproj|solutionrelative:doan2vadt\\viewmodel\\checkout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4346563B-463D-4778-B120-C14AD28D558F}|DoAn2VADT\\DoAn2VADT.csproj|c:\\users\\dyly3\\source\\repos\\phonestore_c-_api\\doan2vadt\\doan2vadt\\areas\\admin\\controllers\\thongketonkhocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4346563B-463D-4778-B120-C14AD28D558F}|DoAn2VADT\\DoAn2VADT.csproj|solutionrelative:doan2vadt\\areas\\admin\\controllers\\thongketonkhocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4346563B-463D-4778-B120-C14AD28D558F}|DoAn2VADT\\DoAn2VADT.csproj|c:\\users\\dyly3\\source\\repos\\phonestore_c-_api\\doan2vadt\\doan2vadt\\views\\cart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4346563B-463D-4778-B120-C14AD28D558F}|DoAn2VADT\\DoAn2VADT.csproj|solutionrelative:doan2vadt\\views\\cart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{4346563B-463D-4778-B120-C14AD28D558F}|DoAn2VADT\\DoAn2VADT.csproj|c:\\users\\dyly3\\source\\repos\\phonestore_c-_api\\doan2vadt\\doan2vadt\\areas\\admin\\controllers\\importcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4346563B-463D-4778-B120-C14AD28D558F}|DoAn2VADT\\DoAn2VADT.csproj|solutionrelative:doan2vadt\\areas\\admin\\controllers\\importcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4346563B-463D-4778-B120-C14AD28D558F}|DoAn2VADT\\DoAn2VADT.csproj|c:\\users\\dyly3\\source\\repos\\phonestore_c-_api\\doan2vadt\\doan2vadt\\areas\\admin\\views\\order\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4346563B-463D-4778-B120-C14AD28D558F}|DoAn2VADT\\DoAn2VADT.csproj|solutionrelative:doan2vadt\\areas\\admin\\views\\order\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4346563B-463D-4778-B120-C14AD28D558F}|DoAn2VADT\\DoAn2VADT.csproj|c:\\users\\dyly3\\source\\repos\\phonestore_c-_api\\doan2vadt\\doan2vadt\\areas\\admin\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4346563B-463D-4778-B120-C14AD28D558F}|DoAn2VADT\\DoAn2VADT.csproj|solutionrelative:doan2vadt\\areas\\admin\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4346563B-463D-4778-B120-C14AD28D558F}|DoAn2VADT\\DoAn2VADT.csproj|c:\\users\\dyly3\\source\\repos\\phonestore_c-_api\\doan2vadt\\doan2vadt\\areas\\admin\\views\\order\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4346563B-463D-4778-B120-C14AD28D558F}|DoAn2VADT\\DoAn2VADT.csproj|solutionrelative:doan2vadt\\areas\\admin\\views\\order\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,58 +38,97 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Checkout.cs",
-              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\ViewModel\\Checkout.cs",
-              "RelativeDocumentMoniker": "DoAn2VADT\\ViewModel\\Checkout.cs",
-              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\ViewModel\\Checkout.cs",
-              "RelativeToolTip": "DoAn2VADT\\ViewModel\\Checkout.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "DocumentIndex": 3,
+              "Title": "ImportController.cs",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\Areas\\Admin\\Controllers\\ImportController.cs",
+              "RelativeDocumentMoniker": "DoAn2VADT\\Areas\\Admin\\Controllers\\ImportController.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\Areas\\Admin\\Controllers\\ImportController.cs",
+              "RelativeToolTip": "DoAn2VADT\\Areas\\Admin\\Controllers\\ImportController.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAAAowBUAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T12:05:30.856Z",
+              "WhenOpened": "2024-12-12T07:39:17.368Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\Areas\\Admin\\Views\\Order\\Index.cshtml",
+              "RelativeDocumentMoniker": "DoAn2VADT\\Areas\\Admin\\Views\\Order\\Index.cshtml",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\Areas\\Admin\\Views\\Order\\Index.cshtml",
+              "RelativeToolTip": "DoAn2VADT\\Areas\\Admin\\Views\\Order\\Index.cshtml",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAAwEYAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-12T07:30:28.994Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\Areas\\Admin\\Views\\Order\\Details.cshtml",
+              "RelativeDocumentMoniker": "DoAn2VADT\\Areas\\Admin\\Views\\Order\\Details.cshtml",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\Areas\\Admin\\Views\\Order\\Details.cshtml",
+              "RelativeToolTip": "DoAn2VADT\\Areas\\Admin\\Views\\Order\\Details.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-12T07:30:25.711Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\Areas\\Admin\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "DoAn2VADT\\Areas\\Admin\\Controllers\\OrderController.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\Areas\\Admin\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "DoAn2VADT\\Areas\\Admin\\Controllers\\OrderController.cs",
+              "ViewState": "AQIAAKUBAAAAAAAAAADwv9kBAABVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T07:27:03.324Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ThongKeTonKhoController.cs",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\Areas\\Admin\\Controllers\\ThongKeTonKhoController.cs",
+              "RelativeDocumentMoniker": "DoAn2VADT\\Areas\\Admin\\Controllers\\ThongKeTonKhoController.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\Areas\\Admin\\Controllers\\ThongKeTonKhoController.cs",
+              "RelativeToolTip": "DoAn2VADT\\Areas\\Admin\\Controllers\\ThongKeTonKhoController.cs",
+              "ViewState": "AQIAAJcAAAAAAAAAAAAUwLYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T07:27:00.461Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CartController.cs",
-              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\Controllers\\CartController.cs",
-              "RelativeDocumentMoniker": "DoAn2VADT\\Controllers\\CartController.cs",
-              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\Controllers\\CartController.cs*",
-              "RelativeToolTip": "DoAn2VADT\\Controllers\\CartController.cs*",
-              "ViewState": "AQIAAA0BAAAAAAAAAAAswCMBAABYAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T12:04:54.127Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\Areas\\Admin\\Views\\ThongKe\\Index.cshtml",
+              "RelativeDocumentMoniker": "DoAn2VADT\\Areas\\Admin\\Views\\ThongKe\\Index.cshtml",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\Areas\\Admin\\Views\\ThongKe\\Index.cshtml",
+              "RelativeToolTip": "DoAn2VADT\\Areas\\Admin\\Views\\ThongKe\\Index.cshtml",
+              "ViewState": "AQIAAGoAAAAAAAAAAAAmwM4AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-12T07:18:27.649Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CheckOut.cshtml",
-              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\Views\\Cart\\CheckOut.cshtml",
-              "RelativeDocumentMoniker": "DoAn2VADT\\Views\\Cart\\CheckOut.cshtml",
-              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\Views\\Cart\\CheckOut.cshtml",
-              "RelativeToolTip": "DoAn2VADT\\Views\\Cart\\CheckOut.cshtml",
-              "ViewState": "AQIAAEIAAAAAAAAAAAAAAGMAAABcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-11T12:04:37.808Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\Views\\Cart\\Index.cshtml",
-              "RelativeDocumentMoniker": "DoAn2VADT\\Views\\Cart\\Index.cshtml",
-              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\Views\\Cart\\Index.cshtml",
-              "RelativeToolTip": "DoAn2VADT\\Views\\Cart\\Index.cshtml",
-              "ViewState": "AQIAAHIAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-11T12:04:20.135Z",
+              "Title": "ThongKeController.cs",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\Areas\\Admin\\Controllers\\ThongKeController.cs",
+              "RelativeDocumentMoniker": "DoAn2VADT\\Areas\\Admin\\Controllers\\ThongKeController.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\Areas\\Admin\\Controllers\\ThongKeController.cs",
+              "RelativeToolTip": "DoAn2VADT\\Areas\\Admin\\Controllers\\ThongKeController.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAQwDAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T07:18:25.251Z",
               "EditorCaption": ""
             }
           ]

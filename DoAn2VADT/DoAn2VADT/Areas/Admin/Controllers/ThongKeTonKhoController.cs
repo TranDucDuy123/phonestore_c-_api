@@ -1,190 +1,189 @@
-﻿/*using DoAn2VADT.Database.Entities;
-using DoAn2VADT.Database;
-using Microsoft.AspNetCore.Mvc;
-using PagedList.Core;
-using Microsoft.EntityFrameworkCore;
-using DoAn2VADT.Helpper;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using AspNetCoreHero.ToastNotification.Abstractions;
-using AspNetCoreHero.ToastNotification.Notyf;
+﻿//using doan2vadt.database.entities;
+//using doan2vadt.database;
+//using microsoft.aspnetcore.mvc;
+//using pagedlist.core;
+//using microsoft.entityframeworkcore;
+//using doan2vadt.helpper;
+//using microsoft.aspnetcore.mvc.rendering;
+//using aspnetcorehero.toastnotification.abstractions;
+//using aspnetcorehero.toastnotification.notyf;
 
-namespace DoAn2VADT.Controllers
-{
-    public class ThongKeTonKhoController : Controller
-    {
-        private readonly AppDbContext _context;
-        public INotyfService _notyfService { get; }
+//namespace doan2vadt.controllers
+//{
+//    public class thongketonkhocontroller : controller
+//    {
+//        private readonly appdbcontext _context;
+//        public inotyfservice _notyfservice { get; }
 
-        public ThongKeTonKhoController(AppDbContext context, INotyfService notyfService)
-        {
-            _context = context;
-            _notyfService = notyfService;
-        }
+//        public thongketonkhocontroller(appdbcontext context, inotyfservice notyfservice)
+//        {
+//            _context = context;
+//            _notyfservice = notyfservice;
+//        }
 
-        // GET: Orders
-        public IActionResult Index(int? page)
-        {
-            var pageNumber = page == null || page <= 0 ? 1 : page.Value;
-            var pageSize = 8;
-            var lsBook = _context.Products
-                .AsNoTracking()
-                .OrderByDescending(x => x.CreatedAt);
-            PagedList<Product> models = new PagedList<Product>(lsBook, pageNumber, pageSize);
-            ViewBag.CurrentPage = pageNumber;
-            return View(models);
-        }
-        [HttpPost]
-        public IActionResult Index(DateTime from_date, DateTime to_date)
-        {
-            using (_context)
-            {
-                ViewBag.GetBills = (from b in _context.Products where b.CreatedAt >= from_date && b.CreatedAt <= to_date == true select b).ToList();
-                ViewBag.GetQuantityOrder = (from b in _context.Products where b.CreatedAt >= from_date && b.CreatedAt <= to_date == true select b.Id).Count();
-                ViewBag.Import = (from b in _context.Imports where b.CreatedAt >= from_date && b.CreatedAt <= to_date == true select b.Id).Count();
-                ViewBag.GetQuantityImport = (from b in _context.Imports where b.CreatedAt >= from_date && b.CreatedAt <= to_date == true select b.Total).Sum();
-                return View();
-            }
-        }
-        public IActionResult Filtter(int CatID = 0)
-        {
-            var url = $"/Book?CatID={CatID}";
-            if (CatID == 0)
-            {
-                url = $"/Book";
-            }
-            return Json(new { status = "success", redirectUrl = url });
-        }
+//        // get: orders
+//        public iactionresult index(int? page)
+//        {
+//            var pagenumber = page == null || page <= 0 ? 1 : page.value;
+//            var pagesize = 8;
+//            var lsbook = _context.products
+//                .asnotracking()
+//                .orderbydescending(x => x.createdat);
+//            pagedlist<product> models = new pagedlist<product>(lsbook, pagenumber, pagesize);
+//            viewbag.currentpage = pagenumber;
+//            return view(models);
+//        }
+//        [httppost]
+//        public iactionresult index(datetime from_date, datetime to_date)
+//        {
+//            using (_context)
+//            {
+//                viewbag.getbills = (from b in _context.products where b.createdat >= from_date && b.createdat <= to_date == true select b).tolist();
+//                viewbag.getquantityorder = (from b in _context.products where b.createdat >= from_date && b.createdat <= to_date == true select b.id).count();
+//                viewbag.import = (from b in _context.imports where b.createdat >= from_date && b.createdat <= to_date == true select b.id).count();
+//                viewbag.getquantityimport = (from b in _context.imports where b.createdat >= from_date && b.createdat <= to_date == true select b.total).sum();
+//                return view();
+//            }
+//        }
+//        public iactionresult filtter(int catid = 0)
+//        {
+//            var url = $"/book?catid={catid}";
+//            if (catid == 0)
+//            {
+//                url = $"/book";
+//            }
+//            return json(new { status = "success", redirecturl = url });
+//        }
 
 
-        public async Task<IActionResult> Details(string? id)
-        {
-            if (id == null || _context.Products == null)
-            {
-                return NotFound();
-            }
+//        public async task<iactionresult> details(string? id)
+//        {
+//            if (id == null || _context.products == null)
+//            {
+//                return notfound();
+//            }
 
-            var book = await _context.Products
-                .Include(b => b.Category)
-                .Include(b => b.Branch)
-                .Include(b => b.Color)
-                .FirstOrDefaultAsync(m => m.Id.ToString() == id);
-            if (book == null)
-            {
-                return NotFound();
-            }
+//            var book = await _context.products
+//                .include(b => b.category)
+//                .include(b => b.branch)
+//                .include(b => b.color)
+//                .firstordefaultasync(m => m.id.tostring() == id);
+//            if (book == null)
+//            {
+//                return notfound();
+//            }
 
-            return View(book);
-        }
-        public async Task<IActionResult> Edit(string? id)
-        {
-            if (id == null || _context.Products == null)
-            {
-                return NotFound();
-            }
+//            return view(book);
+//        }
+//        public async task<iactionresult> edit(string? id)
+//        {
+//            if (id == null || _context.products == null)
+//            {
+//                return notfound();
+//            }
 
-            var book = await _context.Products.FindAsync(id);
-            if (book == null)
-            {
-                return NotFound();
-            }
+//            var book = await _context.products.findasync(id);
+//            if (book == null)
+//            {
+//                return notfound();
+//            }
 
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", book.CategoryId);
-            ViewData["BranchId"] = new SelectList(_context.Branchs, "Id", "Name", book.BranchId);
-            ViewData["ColorId"] = new SelectList(_context.Colors, "Id", "Name", book.ColorId);
-            return View(book);
-        }
+//            viewdata["categoryid"] = new selectlist(_context.categories, "id", "name", book.categoryid);
+//            viewdata["branchid"] = new selectlist(_context.branchs, "id", "name", book.branchid);
+//            viewdata["colorid"] = new selectlist(_context.colors, "id", "name", book.colorid);
+//            return view(book);
+//        }
 
-        // POST: Admin/Book/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Description,Image,Price,Discount,DistributorId,PublisherId,AuthorId,TitleId,CategoryId,Id,Name,CreatedAt,UpdatedAt,DeletedAt,UpdateUserId,CreateUserId,Amont")] Product book, Microsoft.AspNetCore.Http.IFormFile fThumb)
-        {
-            if (id != book.Id.ToString())
-            {
-                return NotFound();
-            }
+//        // post: admin/book/edit/5
+//        // to protect from overposting attacks, enable the specific properties you want to bind to.
+//        // for more details, see http://go.microsoft.com/fwlink/?linkid=317598.
+//        [httppost]
+//        [validateantiforgerytoken]
+//        public async task<iactionresult> edit(string id, [bind("description,image,price,discount,distributorid,publisherid,authorid,titleid,categoryid,id,name,createdat,updatedat,deletedat,updateuserid,createuserid,amont")] product book, microsoft.aspnetcore.http.iformfile fthumb)
+//        {
+//            if (id != book.id.tostring())
+//            {
+//                return notfound();
+//            }
 
-            if (ModelState.IsValid)
-            {
-                book.Name = Utilities.ToTitleCase(book.Name);
-                if (fThumb != null)
-                {
-                    string extension = Path.GetExtension(fThumb.FileName);
-                    string image = Utilities.SEOUrl(book.Name) + extension;
-                    book.Image = await Utilities.UploadFile(fThumb, @"book", image.ToLower());
-                }
-                if (string.IsNullOrEmpty(book.Name)) book.Image = "default.jpg";
-                if (System.IO.File.Exists(book.Name))
-                {
-                    System.IO.File.Delete(book.Name);
-                }
-                book.UpdatedAt = DateTime.Now;
-                _context.Update(book);
-                await _context.SaveChangesAsync();
-                _notyfService.Success("Update mới thành công");
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", book.CategoryId);
-            ViewData["BranchId"] = new SelectList(_context.Branchs, "Id", "Name", book.BranchId);
-            ViewData["ColorId"] = new SelectList(_context.Colors, "Id", "Name", book.ColorId);
-            return View(book);
-        }
-        public async Task<IActionResult> Delete(string? id)
-        {
-            if (id == null || _context.Products == null)
-            {
-                return NotFound();
-            }
+//            if (modelstate.isvalid)
+//            {
+//                book.name = utilities.totitlecase(book.name);
+//                if (fthumb != null)
+//                {
+//                    string extension = path.getextension(fthumb.filename);
+//                    string image = utilities.seourl(book.name) + extension;
+//                    book.image = await utilities.uploadfile(fthumb, @"book", image.tolower());
+//                }
+//                if (string.isnullorempty(book.name)) book.image = "default.jpg";
+//                if (system.io.file.exists(book.name))
+//                {
+//                    system.io.file.delete(book.name);
+//                }
+//                book.updatedat = datetime.now;
+//                _context.update(book);
+//                await _context.savechangesasync();
+//                _notyfservice.success("update mới thành công");
+//                return redirecttoaction(nameof(index));
+//            }
+//            viewdata["categoryid"] = new selectlist(_context.categories, "id", "name", book.categoryid);
+//            viewdata["branchid"] = new selectlist(_context.branchs, "id", "name", book.branchid);
+//            viewdata["colorid"] = new selectlist(_context.colors, "id", "name", book.colorid);
+//            return view(book);
+//        }
+//        public async task<iactionresult> delete(string? id)
+//        {
+//            if (id == null || _context.products == null)
+//            {
+//                return notfound();
+//            }
 
-            var book = await _context.Products
-                .Include(b => b.Category)
-                .Include(b => b.Branch)
-                .Include(b => b.Color)
-                .FirstOrDefaultAsync(m => m.Id.ToString() == id);
-            if (book == null)
-            {
-                return NotFound();
-            }
+//            var book = await _context.products
+//                .include(b => b.category)
+//                .include(b => b.branch)
+//                .include(b => b.color)
+//                .firstordefaultasync(m => m.id.tostring() == id);
+//            if (book == null)
+//            {
+//                return notfound();
+//            }
 
-            return View(book);
-        }
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id, Microsoft.AspNetCore.Http.IFormFile fThumb)
-        {
-            if (_context.Products == null)
-            {
-                return Problem("Entity set 'AppDbContext.Books'  is null.");
-            }
-            var book = await _context.Products.FindAsync(id);
-            if (book != null)
-            {
-                book.Name = Utilities.ToTitleCase(book.Name);
-                if (fThumb != null)
-                {
-                    string extension = Path.GetExtension(fThumb.FileName);
-                    string image = Utilities.SEOUrl(book.Name) + extension;
-                    book.Image = await Utilities.UploadFile(fThumb, @"book", image.ToLower());
-                }
-                if (string.IsNullOrEmpty(book.Name)) book.Image = "default.jpg";
-                if (System.IO.File.Exists(book.Name))
-                {
-                    System.IO.File.Delete(book.Name);
-                }
-                _context.Products.Remove(book);
-            }
+//            return view(book);
+//        }
+//        [httppost, actionname("delete")]
+//        [validateantiforgerytoken]
+//        public async task<iactionresult> deleteconfirmed(string id, microsoft.aspnetcore.http.iformfile fthumb)
+//        {
+//            if (_context.products == null)
+//            {
+//                return problem("entity set 'appdbcontext.books'  is null.");
+//            }
+//            var book = await _context.products.findasync(id);
+//            if (book != null)
+//            {
+//                book.name = utilities.totitlecase(book.name);
+//                if (fthumb != null)
+//                {
+//                    string extension = path.getextension(fthumb.filename);
+//                    string image = utilities.seourl(book.name) + extension;
+//                    book.image = await utilities.uploadfile(fthumb, @"book", image.tolower());
+//                }
+//                if (string.isnullorempty(book.name)) book.image = "default.jpg";
+//                if (system.io.file.exists(book.name))
+//                {
+//                    system.io.file.delete(book.name);
+//                }
+//                _context.products.remove(book);
+//            }
 
-            await _context.SaveChangesAsync();
-            _notyfService.Success("Xóa thành công");
-            return RedirectToAction(nameof(Index));
-        }
+//            await _context.savechangesasync();
+//            _notyfservice.success("xóa thành công");
+//            return redirecttoaction(nameof(index));
+//        }
 
-        private bool BookExists(string id)
-        {
-            return _context.Products.Any(e => e.Id.ToString() == id);
-        }
-    }
-}
-*/
+//        private bool bookexists(string id)
+//        {
+//            return _context.products.any(e => e.id.tostring() == id);
+//        }
+//    }
+//}
