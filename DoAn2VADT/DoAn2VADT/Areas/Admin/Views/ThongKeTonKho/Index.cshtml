@@ -1,0 +1,172 @@
+﻿@model PagedList.Core.IPagedList<DoAn2VADT.Database.Entities.Product>
+@using PagedList.Core.Mvc
+@{
+    ViewData["Title"] = "Thống kê tồn kho";
+    Layout = "~/Areas/Admin/Views/Shared/_GlobalLayout.cshtml";
+}
+
+<h2 class="mb-4">Thống kê tồn kho</h2>
+
+<!-- Bộ lọc -->
+<form method="get" asp-action="Index" class="form-inline mb-4">
+    <div class="form-group mr-3">
+        <label for="catid" class="mr-2">Danh mục:</label>
+        <select name="catid" class="form-control">
+            <option value="0">-- Tất cả --</option>
+            @foreach (var item in (SelectList)ViewBag.CategoryId)
+            {
+                <option value="@item.Value" selected="@(ViewBag.CurrentCateId == item.Value)">@item.Text</option>
+            }
+        </select>
+    </div>
+    <div class="form-group mr-3">
+        <label for="brandid" class="mr-2">Thương hiệu:</label>
+        <select name="brandid" class="form-control">
+            <option value="0">-- Tất cả --</option>
+            @foreach (var item in (SelectList)ViewBag.BrandId)
+            {
+                <option value="@item.Value" selected="@(ViewBag.CurrentBrandId == item.Value)">@item.Text</option>
+            }
+        </select>
+    </div>
+    <div class="form-group mr-3">
+        <label for="stockStatus" class="mr-2">Trạng thái tồn kho:</label>
+        <select name="stockStatus" class="form-control">
+            <option value="">-- Tất cả --</option>
+            <option value="outofstock" selected="@(ViewBag.CurrentStockStatus == "outofstock")">Hết hàng</option>
+            <option value="lowstock" selected="@(ViewBag.CurrentStockStatus == "lowstock")">Sắp hết hàng</option>
+            <option value="instock" selected="@(ViewBag.CurrentStockStatus == "instock")">Còn hàng</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Lọc</button>
+</form>
+
+<!-- Thống kê tổng quan -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="alert alert-danger">
+            <strong>Hết hàng:</strong> @ViewBag.OutOfStock sản phẩm
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="alert alert-warning">
+            <strong>Sắp hết hàng:</strong> @ViewBag.LowStock sản phẩm
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="alert alert-success">
+            <strong>Còn hàng:</strong> @ViewBag.InStock sản phẩm
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="alert alert-info">
+            <strong>Tổng sản phẩm:</strong> @ViewBag.TotalProducts sản phẩm
+        </div>
+    </div>
+</div>
+
+<!-- Biểu đồ thống kê tồn kho -->
+<div class="card mb-4">
+    <div class="card-body">
+        <h5>Biểu đồ tồn kho theo danh mục</h5>
+        <canvas id="stockByCategoryChart" height="100"></canvas>
+    </div>
+</div>
+<div class="card mb-4">
+    <div class="card-body">
+        <h5>Biểu đồ tồn kho theo thương hiệu</h5>
+        <canvas id="stockByBrandChart" height="100"></canvas>
+    </div>
+</div>
+
+<!-- Danh sách sản phẩm tồn kho -->
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Tên sản phẩm</th>
+                <th>Danh mục</th>
+                <th>Thương hiệu</th>
+                <th>Số lượng</th>
+                <th>Giá</th>
+                <th>Ngày tạo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                int index = 1 + (Model.PageNumber - 1) * Model.PageSize;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@index</td>
+                        <td>@item.Name</td>
+                        <td>@item.Category?.Name</td>
+                        <td>@item.Brand?.Name</td>
+                        <td>@item.Quantity</td>
+                        <td>@string.Format("{0:n0}", item.Price) VNĐ</td>
+                        <td>@item.CreatedAt?.ToString("dd/MM/yyyy")</td>
+                    </tr>
+                    index++;
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="7" class="text-center">Không có dữ liệu</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Phân trang -->
+<div class="d-flex justify-content-between mt-3">
+    @if (Model.HasPreviousPage)
+    {
+        <a href="@Url.Action("Index", "ThongKeTonKho", new { page = Model.PageNumber - 1 })" class="btn btn-secondary">Trang trước</a>
+    }
+    <span>Trang @Model.PageNumber / @Model.PageCount</span>
+    @if (Model.HasNextPage)
+    {
+        <a href="@Url.Action("Index", "ThongKeTonKho", new { page = Model.PageNumber + 1 })" class="btn btn-secondary">Trang sau</a>
+    }
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Biểu đồ tồn kho theo danh mục
+        const ctxCategory = document.getElementById('stockByCategoryChart').getContext('2d');
+        const categoryChart = new Chart(ctxCategory, {
+            type: 'bar',
+            data: {
+                labels: @Html.Raw(ViewBag.CategoryLabels),
+                datasets: [{
+                    label: 'Số lượng tồn kho',
+                    data: @Html.Raw(ViewBag.StockByCategory),
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            }
+        });
+
+        // Biểu đồ tồn kho theo thương hiệu
+        const ctxBrand = document.getElementById('stockByBrandChart').getContext('2d');
+        const brandChart = new Chart(ctxBrand, {
+            type: 'bar',
+            data: {
+                labels: @Html.Raw(ViewBag.BrandLabels),
+                datasets: [{
+                    label: 'Số lượng tồn kho',
+                    data: @Html.Raw(ViewBag.StockByBrand),
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            }
+        });
+    </script>
+}

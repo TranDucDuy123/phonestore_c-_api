@@ -10,7 +10,6 @@ namespace DoAn2VADT.Database.Entities
         {
             builder.Property(x => x.Name).HasMaxLength(250).HasColumnType("ntext");
             builder.Property(x => x.Description).HasColumnType("ntext");
-
             builder.HasMany<OrderDetail>(x => x.OrderDetails);
             builder.HasMany<ImportDetail>(x => x.ImportDetails);
             builder.HasMany<Cart>(x => x.Carts);

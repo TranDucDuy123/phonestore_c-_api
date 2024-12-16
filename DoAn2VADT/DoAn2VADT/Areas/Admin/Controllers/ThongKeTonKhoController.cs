@@ -2,10 +2,14 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PagedList.Core;
+using Newtonsoft.Json;
 using System.Linq;
 using System.Threading.Tasks;
 using DoAn2VADT.Database;
 using DoAn2VADT.Database.Entities;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using ClosedXML.Excel;
+using System.Data;
 
 namespace DoAn2VADT.Areas.Admin.Controllers
 {
@@ -21,82 +25,144 @@ namespace DoAn2VADT.Areas.Admin.Controllers
         }
 
         // GET: ThongKeTonKho/Index
-        public IActionResult Index(int page = 1, string searchKey = "")
+        public IActionResult Index(int page = 1, string catid = "0", string brandid = "0", string searchkey = "", string stockStatus = "")
         {
             var pageNumber = page;
-            var pageSize = 10;
+            var pageSize = 8;
 
-            // Query sản phẩm
-            var productsQuery = _context.Products.AsNoTracking();
+            IQueryable<Product> query = _context.Products
+                .AsNoTracking()
+                .Include(p => p.Category)
+                .Include(p => p.Brand)
+                .OrderByDescending(x => x.CreatedAt);
 
-            // Tìm kiếm theo tên sản phẩm nếu có từ khóa
-            if (!string.IsNullOrEmpty(searchKey))
+            // Bộ lọc
+            if (catid != "0" && !string.IsNullOrEmpty(catid))
             {
-                productsQuery = productsQuery.Where(p => p.Name.Contains(searchKey));
+                ViewBag.CurrentCateId = catid;
+                query = query.Where(x => x.CategoryId == catid);
             }
 
-            // Sắp xếp sản phẩm theo số lượng tồn kho giảm dần
-            var products = productsQuery
-                .OrderByDescending(p => p.Quantity)
+            if (brandid != "0" && !string.IsNullOrEmpty(brandid))
+            {
+                ViewBag.CurrentBrandId = brandid;
+                query = query.Where(x => x.BrandId == brandid);
+            }
+
+            if (!string.IsNullOrEmpty(searchkey))
+            {
+                ViewBag.SearchKey = searchkey;
+                query = query.Where(x => x.Name.Contains(searchkey) || x.Brand.Name.Contains(searchkey) || x.Category.Name.Contains(searchkey));
+            }
+
+            if (!string.IsNullOrEmpty(stockStatus))
+            {
+                switch (stockStatus)
+                {
+                    case "outofstock":
+                        query = query.Where(x => x.Quantity <= 0);
+                        break;
+                    case "lowstock":
+                        query = query.Where(x => x.Quantity > 0 && x.Quantity <= 5);
+                        break;
+                    case "instock":
+                        query = query.Where(x => x.Quantity > 5);
+                        break;
+                }
+                ViewBag.CurrentStockStatus = stockStatus;
+            }
+
+            // Thống kê tổng quan
+            ViewBag.OutOfStock = query.Count(p => p.Quantity <= 0);
+            ViewBag.LowStock = query.Count(p => p.Quantity > 0 && p.Quantity <= 5);
+            ViewBag.InStock = query.Count(p => p.Quantity > 5);
+            ViewBag.TotalProducts = query.Count();
+
+            // Dữ liệu biểu đồ tồn kho theo danh mục
+            var stockByCategory = query
+                .Where(p => p.Category != null) // Bỏ các dữ liệu null
+                .GroupBy(p => p.Category.Name)
+                .Select(g => new { Category = g.Key, Total = g.Sum(p => p.Quantity ?? 0) })
                 .ToList();
 
+            ViewBag.CategoryLabels = JsonConvert.SerializeObject(stockByCategory.Select(c => c.Category));
+            ViewBag.StockByCategory = JsonConvert.SerializeObject(stockByCategory.Select(c => c.Total));
+
+            // Dữ liệu biểu đồ tồn kho theo thương hiệu
+            var stockByBrand = query
+                .Where(p => p.Brand != null) // Bỏ các dữ liệu null
+                .GroupBy(p => p.Brand.Name)
+                .Select(g => new { Brand = g.Key, Total = g.Sum(p => p.Quantity ?? 0) })
+                .ToList();
+
+            ViewBag.BrandLabels = JsonConvert.SerializeObject(stockByBrand.Select(b => b.Brand));
+            ViewBag.StockByBrand = JsonConvert.SerializeObject(stockByBrand.Select(b => b.Total));
+
             // Phân trang
-            var pagedProducts = new PagedList<Product>(products.AsQueryable(), pageNumber, pageSize);
+            PagedList<Product> models = new PagedList<Product>(query, pageNumber, pageSize);
 
             ViewBag.CurrentPage = pageNumber;
-            ViewBag.SearchKey = searchKey;
-
-            return View(pagedProducts);
+            ViewBag.CategoryId = new SelectList(_context.Categories, "Id", "Name");
+            ViewBag.BrandId = new SelectList(_context.Brands, "Id", "Name");
+            return View(models);
         }
 
-        // POST: ThongKeTonKho/ThongKeTheoKhoangThoiGian
         [HttpPost]
-        public IActionResult ThongKeTheoKhoangThoiGian(DateTime fromDate, DateTime toDate)
+        public FileResult ExportStockToExcel(string stockStatus = "")
         {
-            if (fromDate > toDate)
+            DataTable dt = new DataTable("TonKho");
+            dt.Columns.AddRange(new DataColumn[] {
+                new DataColumn("Mã sản phẩm"),
+                new DataColumn("Tên sản phẩm"),
+                new DataColumn("Danh mục"),
+                new DataColumn("Thương hiệu"),
+                new DataColumn("Số lượng"),
+                new DataColumn("Giá"),
+                new DataColumn("Ngày tạo")
+            });
+
+            var products = _context.Products
+                .Include(p => p.Category)
+                .Include(p => p.Brand)
+                .AsQueryable();
+
+            switch (stockStatus)
             {
-                ModelState.AddModelError("", "Ngày bắt đầu phải nhỏ hơn hoặc bằng ngày kết thúc.");
-                return View();
+                case "outofstock":
+                    products = products.Where(x => x.Quantity <= 0);
+                    break;
+                case "lowstock":
+                    products = products.Where(x => x.Quantity > 0 && x.Quantity <= 5);
+                    break;
+                case "instock":
+                    products = products.Where(x => x.Quantity > 5);
+                    break;
             }
 
-            // Thống kê tổng số lượng nhập hàng trong khoảng thời gian
-            var totalImports = _context.ImportDetails
-                .Where(i => i.Import.CreatedAt >= fromDate && i.Import.CreatedAt <= toDate)
-                .Sum(i => i.Quantity);
-
-            // Thống kê tổng số lượng xuất hàng (đơn hàng) trong khoảng thời gian
-            var totalExports = _context.OrderDetails
-                .Where(o => o.Order.CreatedAt >= fromDate && o.Order.CreatedAt <= toDate)
-                .Sum(o => o.Quantity);
-
-            ViewBag.TotalImports = totalImports;
-            ViewBag.TotalExports = totalExports;
-            ViewBag.FromDate = fromDate;
-            ViewBag.ToDate = toDate;
-
-            return View("ThongKeTheoKhoangThoiGian");
-        }
-
-        // GET: ThongKeTonKho/Details/5
-        public async Task<IActionResult> Details(string id)
-        {
-            if (id == null)
+            foreach (var product in products)
             {
-                return NotFound();
+                dt.Rows.Add(
+                    product.Code,
+                    product.Name,
+                    product.Category?.Name ?? "N/A",
+                    product.Brand?.Name ?? "N/A",
+                    product.Quantity,
+                    product.Price,
+                    product.CreatedAt?.ToString("dd/MM/yyyy")
+                );
             }
 
-            // Lấy thông tin sản phẩm và chi tiết tồn kho (import/export)
-            var product = await _context.Products
-                .Include(p => p.ImportDetails)
-                .Include(p => p.OrderDetails)
-                .FirstOrDefaultAsync(p => p.Id == id);
-
-            if (product == null)
+            using (XLWorkbook wb = new XLWorkbook())
             {
-                return NotFound();
+                wb.Worksheets.Add(dt, "Tồn Kho");
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    wb.SaveAs(stream);
+                    return File(stream.ToArray(),
+                        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                        "BaoCaoTonKho.xlsx");
+                }
             }
-
-            return View(product);
         }
     }
 }
