@@ -1,0 +1,113 @@
+﻿@using PagedList.Core.Mvc
+@model PagedList.Core.IPagedList<DoAn2VADT.Database.Entities.Product>
+@{
+    int CurrentPage = ViewBag.CurrentPage;
+    ViewData["Title"] = "Sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="fa-solid fa-house mr-1"></i>Trang chủ</a>
+            <span class="breadcrumb-item active">Sản phẩm</span>
+        </nav>
+    </div>
+</div>
+<section class="bg-light">
+ <div class="container">
+        <div class="row text-center py-3">
+            <div class="col-lg-6 m-auto">
+                <h2 class="h1 text-uppercase">Tất cả sản phẩm</h2>
+            </div>
+        </div>
+
+        <!-- Form lọc và sắp xếp -->
+        <div class="row mb-3">
+           
+            <div class="col-md-6">
+                <select id="sortSelect" class="form-select">
+                    <option value="asc">Giá từ thấp đến cao</option>
+                    <option value="desc">Giá từ cao đến thấp</option>
+                </select>
+            </div>
+        </div>
+
+
+
+        <!-- Danh sách sản phẩm -->
+        <div id="productContainer" class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-12 col-md-3 mb-4">
+                    <div class="card h-100 card-feature">
+                        <a href="~/Product/Details/@item.Id">
+                            <img src="~/images/product/@(string.IsNullOrEmpty(item.Image) ? "default-product.jpg" : item.Image)" class="card-img-top" alt="@item.Name" />
+                        </a>
+                        <div class="card-body">
+                            <ul class="list-unstyled d-flex justify-content-between">
+                                <li>
+                                    <i class="text-warning fa-solid fa-star"></i>
+                                    <i class="text-warning fa-solid fa-star"></i>
+                                    <i class="text-warning fa-solid fa-star"></i>
+                                    <i class="text-warning fa-solid fa-star"></i>
+                                    <i class="text-warning fa-solid fa-star"></i>
+                                </li>
+                                <li class="text-muted text-right">@item.Price?.ToString("n0") VNĐ</li>
+                            </ul>
+                            <a href="~/Product/Details/@item.Id" class="h5 text-decoration-none text-dark">@item.Name</a>
+                            <p class="text-muted">
+                                @Html.Raw(item.Description?.Length > 70 ? item.Description.Substring(0, 70) + "..." : item.Description)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+         <div aria-label="Page navigation example">
+                <ul class="pagination">
+                    <pager class="pager-container" list="@Model" list="@Model" asp-controller="Product" asp-route-brandid="@ViewBag.brandid" asp-route-categoryid="@ViewBag.categoryid" asp-action="Index" />
+                </ul>
+         </div>
+    </div>
+</section>
+@section Styles{
+    <style>
+
+    </style>
+}
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Sắp xếp sản phẩm khi chọn giá trị
+            $('#sortSelect').change(function () {
+                var sortOrder = $(this).val();
+                var filters = {
+                    sortPrice: sortOrder,
+                    brandid: '@ViewBag.brandid',
+                    categoryid: '@ViewBag.categoryid',
+                    search: '@ViewBag.search'
+                };
+                loadProducts(filters);
+            });
+
+            // Hàm gọi AJAX để tải sản phẩm
+            function loadProducts(filters) {
+                var queryParams = $.param(filters);
+
+                $.ajax({
+                    url: '/Product/Index?' + queryParams,
+                    type: 'GET',
+                    success: function (data) {
+                        var container = $('#productContainer');
+                        var newContent = $(data).find('#productContainer').html();
+                        container.html(newContent);
+                    },
+                    error: function () {
+                        alert('Đã xảy ra lỗi. Vui lòng thử lại.');
+                    }
+                });
+            }
+        });
+
+    </script>
+}

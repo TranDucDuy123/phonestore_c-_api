@@ -1,0 +1,251 @@
+﻿@using PagedList.Core.Mvc
+@model PagedList.Core.IPagedList<DoAn2VADT.Database.Entities.Product>
+@{
+    int CurrentPage = ViewBag.CurrentPage;
+    ViewData["Title"] = "Sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_GlobalLayout.cshtml";
+}
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-controller="Dashboard" asp-action="Index" class="breadcrumb-item"><i class="fa-solid fa-house mr-1"></i>Trang chủ</a>
+            <span class="breadcrumb-item active">Danh sách sản phẩm : trang @CurrentPage</span>
+        </nav>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="row m-b-30">
+            <div class="col-md-12">
+                <div class="row">
+                    <!-- Tìm kiếm sản phẩm -->
+                    <div class="col-md-4">
+                        <div class="input-affix m-v-10">
+                            <i class="prefix-icon anticon anticon-search opacity-04"></i>
+                            <form method="get" asp-action="Index" asp-controller="Product">
+                                <input id="keyword" name="searchkey" type="text" class="form-control" placeholder="Tìm kiếm sản phẩm" value="@ViewBag.SearchKey">
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Nhập từ file Excel -->
+                    <div class="col-md-4">
+                        <form method="post" asp-controller="Import" asp-action="ImportfromExcel" enctype="multipart/form-data">
+                            <div class="input-affix m-v-10">
+                                <div class="file-input">
+                                    <input type="file" accept=".xls,.xlsx" name="file" id="file-input" class="file-input__input" />
+                                    <label class="file-input__label" for="file-input">
+                                        <i class="fa-sharp fa-solid fa-upload mr-1"></i>
+                                        <span>File</span>
+                                    </label>
+                                </div>
+                                <div class="file-input">
+                                    <button class="btn btn-success btn-outline-secondary form-control" name="file" type="submit" disabled>Nhập</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Xuất danh sách -->
+                    <div class="col-md-4 text-right m-v-10">
+                        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Xuất danh sách
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item btn btn-light" href="@Url.Action("ExportExcel", "Product")">Xuất Excel</a>
+                            <a class="dropdown-item btn btn-light" href="@Url.Action("ExportPdf", "Product")">Xuất PDF</a>
+                        </div>
+                        <a class="btn btn-primary" asp-controller="Product" asp-action="Create"><i class="anticon anticon-plus-circle m-r-5"></i>Thêm sản phẩm</a>
+                    </div>
+
+                </div>
+            </div> 
+            </div>  
+             <div class="col-md-12">
+                <div class="row">
+                   <div class="col-md-4 m-v-10">
+                        <select class="custom-select" style="min-width: 200px;" id="txtCatID" name="catid" asp-items="ViewBag.CategoryId">
+                            <option value="0" selected>Tất cả danh mục</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4 m-v-10">
+                        <select class="custom-select" style="min-width: 200px;" id="txtBrandID" name="brandid" asp-items="ViewBag.BrandId">
+                            <option value="0" selected>Tất cả thương hiệu</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>  
+        </div>
+        <div class="table-responsive table-hover">
+            <table class="table align-middle mb-0 bg-white">
+            <thead class="bg-light">
+                <tr>
+                    <th>#</th>
+                    <th>Thông tin</th>
+                    <th>Giá</th>
+                    <th>Hiệu lực</th>
+                    <th>Trạng thái</th>
+                    <th class="text-center">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="~/images/product/@item.Image" alt="" style="width: 70px; height: 70px" class="rounded-circle" />
+                                    <div class="mx-3">
+                                        <p class="font-weight-bold mb-1">@item.Name</p>
+                                        <p class="mb-0 text-nowrap">Mã: @item.Code</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="mb-1 text-nowrap">Thương hiệu: @(item.Brand.Name)</p>
+                                <p class="mb-0 text-nowrap">Danh Mục: @(item.Category.Name)</p>
+                            </td>
+                            <td>
+                                <p class="mb-1 text-nowrap">Đơn giá: @(item.Price?.ToString("n0")) VNĐ</p>
+                                <p class="text-muted mb-0 text-nowrap">Giảm giá: @(item.Discount != null ? item.Discount?.ToString("n0") + " VNĐ" : "Không")</p>
+                            </td>
+                            <td>
+                                @if (item.Effective)
+                                {
+                                    <span class="badge badge-success">Có</span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-danger">Không</span>
+                                }
+                            </td>
+                            <td>
+                                @if (item.Quantity > 0)
+                                {
+                                    <span class="badge badge-success">Còn hàng</span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-danger">Hết hàng</span>
+                                }
+                            </td>
+                            <td class="text-center">
+                                <a class="btn btn-primary fas fa-eye" asp-controller="Product" asp-action="Details" asp-route-id="@item.Id"></a>
+                                <a class="btn btn-info fas fa-edit" asp-controller="Product" asp-action="Edit" asp-route-id="@item.Id"></a>
+                                <a class="btn btn-danger far fa-trash-alt" asp-controller="Product" asp-action="Delete" asp-route-id="@item.Id"></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+        </table>
+            <div aria-label="Page navigation example">
+                <ul class="pagination">
+                    <pager class="pager-container" list="@Model" list="@Model" asp-controller="Product" asp-route-CatID="@ViewBag.CurrentCateId" asp-action="Index" />
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <style>
+        .file-input__input {
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .file-input__label {
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            border-radius: 4px;
+            font-s134i25ze: 14px;
+            font-weight: 600;
+            color: #fff;
+            font-size: 14px;
+            padding: 10px 12px;
+            background-color: #4245a8;
+            box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+        }
+
+            .file-input__label svg {
+                height: 16px;
+                margin-right: 4px;
+            }
+    </style>
+    <script>
+       $(document).ready(function () {
+            // Tìm kiếm sản phẩm
+            $("#keyword").keyup(function () {
+                var searchkey = $("#keyword").val(); // Lấy giá trị tìm kiếm
+                var catid = $("#txtCatID").val();    // Lấy giá trị danh mục
+                var brandid = $("#txtBrandID").val(); // Lấy giá trị thương hiệu
+
+                // Kiểm tra nếu trường tìm kiếm không trống, thực hiện tìm kiếm
+                if (searchkey.trim() !== "") {
+                    $.ajax({
+                        url: '/Admin/Product/Index',
+                        type: 'GET',
+                        data: {
+                            searchkey: searchkey,   // Gửi từ khóa tìm kiếm
+                            catid: catid,           // Gửi danh mục
+                            brandid: brandid,       // Gửi thương hiệu
+                            page: 1                 // Reset về trang 1 mỗi lần tìm kiếm
+                        },
+                        success: function (data) {
+                            $(".table-responsive").html($(data).find(".table-responsive").html());
+                            $(".pagination-container").html($(data).find(".pagination-container").html());
+                        }
+                    });
+                } else if (searchkey.trim() === "") {
+                    // Nếu trường tìm kiếm trống, không gửi yêu cầu (chỉ giữ các bộ lọc)
+                    $.ajax({
+                        url: '/Admin/Product/Index',
+                        type: 'GET',
+                        data: {
+                            searchkey: "",           // Gửi tìm kiếm trống
+                            catid: catid,            // Gửi danh mục
+                            brandid: brandid,        // Gửi thương hiệu
+                            page: 1                  // Reset về trang 1
+                        },
+                        success: function (data) {
+                            $(".table-responsive").html($(data).find(".table-responsive").html());
+                            $(".pagination-container").html($(data).find(".pagination-container").html());
+                        }
+                    });
+                }
+            });
+
+            // Lọc theo danh mục hoặc thương hiệu
+            $("#txtCatID, #txtBrandID").change(function () {
+                var catid = $("#txtCatID").val(); // Lấy giá trị danh mục
+                var brandid = $("#txtBrandID").val(); // Lấy giá trị thương hiệu
+                var searchkey = $("#keyword").val(); // Lấy giá trị tìm kiếm
+
+                $.ajax({
+                    url: '/Admin/Product/Index',
+                    type: 'GET',
+                    data: {
+                        searchkey: searchkey.trim() !== "" ? searchkey : "", // Nếu trường tìm kiếm trống, chỉ gửi bộ lọc
+                        catid: catid,
+                        brandid: brandid,
+                        page: 1 // Reset về trang 1 mỗi lần thay đổi bộ lọc
+                    },
+                    success: function (data) {
+                        $(".table-responsive").html($(data).find(".table-responsive").html());
+                        $(".pagination-container").html($(data).find(".pagination-container").html());
+                    }
+                });
+            });
+        });
+
+
+
+    </script>
+}

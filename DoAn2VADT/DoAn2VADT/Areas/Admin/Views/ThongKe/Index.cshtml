@@ -1,0 +1,320 @@
+﻿@using PagedList.Core.Mvc
+@model PagedList.Core.IPagedList<DoAn2VADT.Database.Entities.Order>
+@{
+    ViewData["Title"] = "Thống kê doanh thu";
+    Layout = "~/Areas/Admin/Views/Shared/_GlobalLayout.cshtml";
+    int CurrentPage = ViewBag.CurrentPage ?? 1;
+}
+
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-controller="Dashboard" asp-action="Index" class="breadcrumb-item">
+                <i class="fa-solid fa-house mr-1"></i>Trang chủ
+            </a>
+            <span class="breadcrumb-item active">Thống kê doanh thu: trang @CurrentPage</span>
+        </nav>
+    </div>
+</div>
+<!-- Hiển thị sản phẩm bán chạy nhất -->
+<div class="card mt-4">
+    <div class="card-body">
+        <h5>Sản phẩm bán chạy nhất</h5>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng bán</th>
+                    <th>Doanh thu</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (ViewBag.ProductSales != null)
+                {
+                    foreach (var product in ViewBag.ProductSales)
+                    {
+                        <tr>
+                            <td>@product.ProductName</td>
+                            <td>@product.TotalQuantity</td>
+                            <td>@string.Format("{0:n0}", product.TotalRevenue) VNĐ</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="3" class="text-center">Không có sản phẩm bán chạy trong khoảng thời gian này</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- Biểu đồ thống kê -->
+<div class="card mb-4">
+    <div class="card-body">
+        <h5>Biểu đồ thống kê đơn hàng theo tháng</h5>
+        <canvas id="ordersChart" height="100"></canvas>
+    </div>
+</div>
+
+<!-- Thống kê doanh thu theo khoảng thời gian -->
+<div class="card">
+    <div class="card-body">
+        <form method="post" class="form-inline mb-4">
+            <div class="form-group">
+                <label for="from_date" class="mr-2">Từ ngày:</label>
+                <input type="date" id="from_date" name="from_date" class="form-control mr-2" required />
+            </div>
+            <div class="form-group">
+                <label for="to_date" class="mr-2">Đến ngày:</label>
+                <input type="date" id="to_date" name="to_date" class="form-control mr-2" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Lọc</button>
+        </form>
+
+        <!-- Hiển thị kết quả thống kê -->
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Số đơn hàng: <span class="text-info">@ViewBag.GetQuantityOrder</span></h5>
+            </div>
+            <div class="col-md-4">
+                <h5>
+                    Tổng doanh thu: <span class="text-success">
+                        @(ViewBag.SumTotal != null ? string.Format("{0:n0}", ViewBag.SumTotal) + " VNĐ" : "0 VNĐ")
+                    </span>
+                </h5>
+            </div>
+            <div class="col-md-4">
+                <h5>
+                    Lợi nhuận: <span class="text-danger">
+                        @(ViewBag.SumLoiNhuan != null ? string.Format("{0:n0}", ViewBag.SumLoiNhuan) + " VNĐ" : "0 VNĐ")
+                    </span>
+                </h5>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Tên khách hàng</th>
+                        <th>Mã đơn hàng</th>
+                        <th>Tổng tiền</th>
+                        <th>Ngày tạo</th>
+                        <th>Trạng thái</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        int index = 1 + (Model.PageNumber - 1) * Model.PageSize;
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@index</td>
+                                <td>@item.Name</td>
+                                <td>@item.Code</td>
+                                <td>@string.Format("{0:n0}", item.Total) VNĐ</td>
+                                <td>@(item.CreatedAt.HasValue ? item.CreatedAt.Value.ToString("dd/MM/yyyy") : "N/A")</td>
+                                <td>
+                                    <span class="badge @(
+                                        item.Status == "Completed" ? "badge-success" :
+                                        item.Status == "Pending" ? "badge-warning" :
+                                        "badge-danger")">
+                                        @item.Status
+                                    </span>
+                                </td>
+                                <td>
+                                    <a asp-area="Admin" asp-controller="Order" asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">
+                                        Xem chi tiết
+                                    </a>
+                                </td>
+                            </tr>
+                            index++;
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="7" class="text-center">Không có dữ liệu</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Phân trang -->
+        <div class="d-flex justify-content-between mt-3">
+            @if (Model.HasPreviousPage)
+            {
+                <a href="@Url.Action("Index", "ThongKe", new { page = Model.PageNumber - 1 })" class="btn btn-secondary">Trang trước</a>
+            }
+            <span>Trang @Model.PageNumber / @Model.PageCount</span>
+            @if (Model.HasNextPage)
+            {
+                <a href="@Url.Action("Index", "ThongKe", new { page = Model.PageNumber + 1 })" class="btn btn-secondary">Trang sau</a>
+            }
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Dữ liệu cho biểu đồ
+        const filteredLabels = @Html.Raw(ViewBag.ChartLabels);
+        const filteredRevenues = @Html.Raw(ViewBag.ChartData);
+        const filteredOrderCounts = @Html.Raw(ViewBag.ChartOrderCounts);
+
+        // Tạo hoặc cập nhật biểu đồ
+        const ctx = document.getElementById('ordersChart').getContext('2d');
+        const ordersChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: filteredLabels,
+                datasets: [
+                    {
+                        label: 'Số lượng đơn hàng',
+                        data: filteredOrderCounts,
+                        borderWidth: 1,
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                    },
+                    {
+                        label: 'Tổng doanh thu (VNĐ)',
+                        data: filteredRevenues,
+                        borderWidth: 1,
+                        backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        type: 'line',
+                        tension: 0.4,
+                        yAxisID: 'y-axis-revenue',
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Tháng',
+                        },
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Số lượng đơn hàng',
+                        },
+                    },
+                    'y-axis-revenue': {
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'Doanh thu (VNĐ)',
+                        },
+                        grid: {
+                            drawOnChartArea: false,
+                        },
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                let value = context.raw;
+                                if (context.dataset.label === 'Tổng doanh thu (VNĐ)') {
+                                    return `${value.toLocaleString()} VNĐ`;
+                                }
+                                return value;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+}
+
+@* @section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Dữ liệu cho biểu đồ
+        const monthlyOrderCounts = @Html.Raw(Json.Serialize(ViewBag.MonthlyOrderCounts));
+        const monthlyRevenues = @Html.Raw(Json.Serialize(ViewBag.MonthlyRevenues));
+        const monthLabels = @Html.Raw(Json.Serialize(ViewBag.MonthLabels));
+
+        // Tạo biểu đồ
+        const ctx = document.getElementById('ordersChart').getContext('2d');
+        const ordersChart = new Chart(ctx, {
+            type: 'bar', // Loại biểu đồ
+            data: {
+                labels: monthLabels,
+                datasets: [
+                    {
+                        label: 'Số lượng đơn hàng',
+                        data: monthlyOrderCounts,
+                        borderWidth: 1,
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)', // Màu cột
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                    },
+                    {
+                        label: 'Tổng doanh thu (VNĐ)',
+                        data: monthlyRevenues,
+                        borderWidth: 1,
+                        backgroundColor: 'rgba(75, 192, 192, 0.5)', // Màu cột
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        type: 'line', // Biểu đồ đường cho doanh thu
+                        tension: 0.4,
+                        yAxisID: 'y-axis-revenue',
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Tháng',
+                        },
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Số lượng đơn hàng',
+                        },
+                    },
+                    'y-axis-revenue': {
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'Doanh thu (VNĐ)',
+                        },
+                        grid: {
+                            drawOnChartArea: false, // Loại bỏ lưới phụ trùng lặp
+                        },
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                let value = context.raw;
+                                if (context.dataset.label === 'Tổng doanh thu (VNĐ)') {
+                                    return `${value.toLocaleString()} VNĐ`;
+                                }
+                                return value;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+} *@

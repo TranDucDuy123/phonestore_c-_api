@@ -1,0 +1,28 @@
+﻿@model IEnumerable<DoAn2VADT.Database.Entities.Color>
+
+<h2>Danh sách màu</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Mã Hex</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var color in Model)
+        {
+            <tr>
+                <td>@color.Name</td>
+                <td>@color.HexCode</td>
+                <td>
+                    <a href="/Color/Edit/@color.Id" class="btn btn-primary">Sửa</a>
+                    <a href="/Color/Delete/@color.Id" class="btn btn-danger">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/Color/Create" class="btn btn-success">Thêm màu mới</a>

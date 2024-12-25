@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Thêm sản phẩm vào kho";
+    Layout = "~/Areas/Admin/Views/Shared/_GlobalLayout.cshtml";
+}
+
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-controller="Dashboard" asp-action="Index" class="breadcrumb-item"><i class="fa-solid fa-house mr-1"></i>Trang chủ</a>
+            <span class="breadcrumb-item active">Thêm sản phẩm vào kho</span>
+        </nav>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <form asp-action="AddImportSession" method="post">
+            <div class="form-group">
+                <label for="ProductId">Chọn sản phẩm:</label>
+                <select class="form-control" id="ProductId" name="ProductId" asp-items="ViewBag.Products">
+                    <option value="" selected disabled>Chọn sản phẩm</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Quantity">Số lượng:</label>
+                <input type="number" class="form-control" id="Quantity" name="Quantity" required />
+            </div>
+            <div class="form-group">
+                <label for="PriceIn">Giá nhập:</label>
+                <input type="number" class="form-control" id="PriceIn" name="PriceIn" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Thêm sản phẩm vào kho</button>
+        </form>
+    </div>
+</div>

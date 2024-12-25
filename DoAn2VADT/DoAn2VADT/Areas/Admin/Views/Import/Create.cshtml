@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "Xác nhận nhập kho";
+    Layout = "~/Areas/Admin/Views/Shared/_GlobalLayout.cshtml";
+    var importSession = ViewBag.ImportSession as List<DoAn2VADT.Database.Entities.ImportDetail>; // Chuyển kiểu mạnh mẽ
+}
+
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-controller="Dashboard" asp-action="Index" class="breadcrumb-item"><i class="fa-solid fa-house mr-1"></i>Trang chủ</a>
+            <span class="breadcrumb-item active">Xác nhận nhập kho</span>
+        </nav>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h3>Danh sách sản phẩm nhập kho</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Giá nhập</th>
+                    <th>Tổng</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in importSession)
+                {
+                    <tr>
+                        <td>
+                            @if (item.Product != null)
+                            {
+                                @item.Product.Name
+                            }
+                            else
+                            {
+                                <span>Không có sản phẩm</span>
+                            }
+                        </td>
+                        <td>@item.Quantity</td>
+                        <td>@item.PriceIn</td>
+                        <td>@item.Total</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <h4>
+            Tổng tiền nhập kho:
+            @if (importSession != null)
+            {
+                decimal totalAmount = 0;
+                foreach (var item in importSession)
+                {
+                    totalAmount += item.Total ?? 0;
+                }
+                @totalAmount
+            }
+        </h4>
+
+        <form asp-action="CreateConfirm" method="post">
+            <button type="submit" class="btn btn-success">Xác nhận nhập kho</button>
+        </form>
+    </div>
+</div>
