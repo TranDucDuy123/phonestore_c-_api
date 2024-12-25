@@ -76,7 +76,7 @@
               "RelativeDocumentMoniker": "DoAn2VADT\\Areas\\Admin\\Views\\ThongKe\\Index.cshtml",
               "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\Areas\\Admin\\Views\\ThongKe\\Index.cshtml",
               "RelativeToolTip": "DoAn2VADT\\Areas\\Admin\\Views\\ThongKe\\Index.cshtml",
-              "ViewState": "AQIAAHAAAAAAAAAAAAAwwBMAAAAXAAAA",
+              "ViewState": "AQIAAHYAAAAAAAAAAAAwwBMAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-12-25T08:37:59.011Z",
               "EditorCaption": ""
@@ -91,8 +91,7 @@
               "RelativeToolTip": "DoAn2VADT\\Areas\\Admin\\Controllers\\ThongKeController.cs",
               "ViewState": "AQIAAF4AAAAAAAAAAAAAAG0AAABLAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-25T08:33:39.308Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-25T08:33:39.308Z"
             },
             {
               "$type": "Document",
@@ -104,8 +103,7 @@
               "RelativeToolTip": "DoAn2VADT\\Views\\Cart\\Index.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-25T08:24:46.495Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-25T08:24:46.495Z"
             },
             {
               "$type": "Document",
@@ -117,8 +115,7 @@
               "RelativeToolTip": "DoAn2VADT\\Controllers\\CartController.cs",
               "ViewState": "AQIAAEIAAAAAAAAAAAAowBIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-25T08:24:37.108Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-25T08:24:37.108Z"
             },
             {
               "$type": "Document",
@@ -130,8 +127,7 @@
               "RelativeToolTip": "DoAn2VADT\\Controllers\\SessionExpireAttribute.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-25T07:26:46.84Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-25T07:26:46.84Z"
             },
             {
               "$type": "Document",
@@ -143,8 +139,7 @@
               "RelativeToolTip": "DoAn2VADT\\Areas\\Admin\\Controllers\\AccountController.cs",
               "ViewState": "AQIAADUAAAAAAAAAAAAIwFIAAABUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-25T07:20:55.875Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-25T07:20:55.875Z"
             },
             {
               "$type": "Document",
@@ -156,8 +151,7 @@
               "RelativeToolTip": "DoAn2VADT\\Areas\\Admin\\Views\\Import\\Index.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAADgAAAA0AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-25T07:08:42.066Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-25T07:08:42.066Z"
             },
             {
               "$type": "Document",
@@ -169,8 +163,7 @@
               "RelativeToolTip": "DoAn2VADT\\Areas\\Admin\\Controllers\\ImportController.cs",
               "ViewState": "AQIAAHoAAAAAAAAAAAAswJoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-25T07:02:27.973Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-25T07:02:27.973Z"
             },
             {
               "$type": "Document",
@@ -182,8 +175,7 @@
               "RelativeToolTip": "DoAn2VADT\\Database\\Entities\\Base\\BaseEntity.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-25T07:14:50.346Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-25T07:14:50.346Z"
             },
             {
               "$type": "Document",
@@ -195,8 +187,7 @@
               "RelativeToolTip": "DoAn2VADT\\Areas\\Admin\\Views\\Import\\Create.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-25T07:02:46.43Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-25T07:02:46.43Z"
             },
             {
               "$type": "Document",
@@ -208,8 +199,7 @@
               "RelativeToolTip": "DoAn2VADT\\Areas\\Admin\\Views\\Import\\AddImport.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAABjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-25T07:02:45.117Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-25T07:02:45.117Z"
             },
             {
               "$type": "Document",
@@ -221,8 +211,7 @@
               "RelativeToolTip": "DoAn2VADT\\Database\\Entities\\ImportDetail.cs",
               "ViewState": "AQIAABAAAAAAAAAAAAAzwAkAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-25T07:59:31.743Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-25T07:59:31.743Z"
             },
             {
               "$type": "Document",
@@ -234,8 +223,7 @@
               "RelativeToolTip": "DoAn2VADT\\Shared\\ConstString.cs",
               "ViewState": "AQIAABoAAAAAAAAAAAA7wCkAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-25T07:26:58.696Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-25T07:26:58.696Z"
             },
             {
               "$type": "Document",
@@ -247,8 +235,7 @@
               "RelativeToolTip": "DoAn2VADT\\Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAA5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-25T07:36:30.836Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-25T07:36:30.836Z"
             }
           ]
         }

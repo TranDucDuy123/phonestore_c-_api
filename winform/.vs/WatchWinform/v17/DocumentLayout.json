@@ -1,0 +1,463 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\api\\apisettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\api\\apisettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\api\\apiclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\api\\apiclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|c:\\users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\gui\\home\\frmhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\gui\\home\\frmhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\service\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\service\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\gui\\login\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\gui\\login\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\gui\\login\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\gui\\login\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\gui\\component\\productcom\\componentproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\gui\\component\\productcom\\componentproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\gui\\component\\productcom\\componentproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\gui\\component\\productcom\\componentproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\gui\\component\\productcom\\editlayout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\gui\\component\\productcom\\editlayout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\gui\\component\\productcom\\productlayout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\gui\\component\\productcom\\productlayout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\gui\\component\\exportedhistorycom\\exportedhistorylayout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\gui\\component\\exportedhistorycom\\exportedhistorylayout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\gui\\component\\exportedhistorycom\\componentexportedhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\gui\\component\\exportedhistorycom\\componentexportedhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\service\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\service\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\gui\\component\\importedhistorycom\\importedhistorylayout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\gui\\component\\importedhistorycom\\importedhistorylayout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\gui\\home\\frmhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\gui\\home\\frmhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\service\\importdetailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\service\\importdetailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\gui\\component\\importedhistorycom\\importedhistorylayout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\gui\\component\\importedhistorycom\\importedhistorylayout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\gui\\component\\importedhistorycom\\componentimportedhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\gui\\component\\importedhistorycom\\componentimportedhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\gui\\component\\importcom\\viewpreimportlayout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\gui\\component\\importcom\\viewpreimportlayout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\datas\\models\\importdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\datas\\models\\importdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\shared\\globalvar\\importglobal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\shared\\globalvar\\importglobal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\gui\\component\\importedhistorycom\\componentimportedhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\gui\\component\\importedhistorycom\\componentimportedhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\gui\\component\\importcom\\componentimported.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\gui\\component\\importcom\\componentimported.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\gui\\component\\brandcom\\componentbrand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\gui\\component\\brandcom\\componentbrand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\gui\\component\\exportedhistorycom\\componentexportedhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\gui\\component\\exportedhistorycom\\componentexportedhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\gui\\component\\exportcom\\componentexport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\gui\\component\\exportcom\\componentexport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\watchwinform\\gui\\component\\exportcom\\componentexported.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{58B030B3-C8A2-48F8-B590-FD8FB96A7767}|WatchWinform\\WatchWinform.csproj|solutionrelative:watchwinform\\gui\\component\\exportcom\\componentexported.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ComponentProduct.cs",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Component\\ProductCom\\ComponentProduct.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Gui\\Component\\ProductCom\\ComponentProduct.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Component\\ProductCom\\ComponentProduct.cs",
+              "RelativeToolTip": "WatchWinform\\Gui\\Component\\ProductCom\\ComponentProduct.cs",
+              "ViewState": "AQIAAEcAAAAAAAAAAAAAAD0AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T14:29:15.818Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ComponentProduct.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Component\\ProductCom\\ComponentProduct.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Gui\\Component\\ProductCom\\ComponentProduct.cs",
+              "ToolTip": "C:\\Users\\dyly3\\OneDrive\\M\u00E1y t\u00EDnh\\phone store\\ElectronicManagement-Winform\\WatchWinform\\Gui\\Component\\ProductCom\\ComponentProduct.cs [Design]",
+              "RelativeToolTip": "..\\..\\..\\..\\OneDrive\\M\u00E1y t\u00EDnh\\phone store\\ElectronicManagement-Winform\\WatchWinform\\Gui\\Component\\ProductCom\\ComponentProduct.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T14:29:14.522Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProductService.cs",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Service\\ProductService.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Service\\ProductService.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Service\\ProductService.cs",
+              "RelativeToolTip": "WatchWinform\\Service\\ProductService.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAuwCsAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T14:28:36.929Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FrmHome.cs",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Home\\FrmHome.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Gui\\Home\\FrmHome.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Home\\FrmHome.cs",
+              "RelativeToolTip": "WatchWinform\\Gui\\Home\\FrmHome.cs",
+              "ViewState": "AQIAAPIAAAAAAAAAAAAcwAQBAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T14:19:56.492Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\App.config",
+              "RelativeDocumentMoniker": "WatchWinform\\App.config",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\App.config",
+              "RelativeToolTip": "WatchWinform\\App.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-12-09T21:35:18.304Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ApiSettings.cs",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\API\\ApiSettings.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\API\\ApiSettings.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\API\\ApiSettings.cs",
+              "RelativeToolTip": "WatchWinform\\API\\ApiSettings.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T21:35:12.448Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ApiClient.cs",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\API\\ApiClient.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\API\\ApiClient.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\API\\ApiClient.cs",
+              "RelativeToolTip": "WatchWinform\\API\\ApiClient.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T21:35:07.613Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ProductLayout.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Component\\ProductCom\\ProductLayout.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Gui\\Component\\ProductCom\\ProductLayout.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\winwin\\Copy\\WatchWinform\\Gui\\Component\\ProductCom\\ProductLayout.cs [Design]",
+              "RelativeToolTip": "..\\..\\winwin\\Copy\\WatchWinform\\Gui\\Component\\ProductCom\\ProductLayout.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T14:30:03.347Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "EditLayout.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Component\\ProductCom\\EditLayout.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Gui\\Component\\ProductCom\\EditLayout.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\winwin\\Copy\\WatchWinform\\Gui\\Component\\ProductCom\\EditLayout.cs [Design]",
+              "RelativeToolTip": "..\\..\\winwin\\Copy\\WatchWinform\\Gui\\Component\\ProductCom\\EditLayout.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T14:30:06.314Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FrmLogin.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Login\\FrmLogin.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Gui\\Login\\FrmLogin.cs",
+              "ToolTip": "C:\\Users\\dyly3\\OneDrive\\M\u00E1y t\u00EDnh\\phone store\\ElectronicManagement-Winform\\WatchWinform\\Gui\\Login\\FrmLogin.cs [Design]",
+              "RelativeToolTip": "..\\..\\..\\..\\OneDrive\\M\u00E1y t\u00EDnh\\phone store\\ElectronicManagement-Winform\\WatchWinform\\Gui\\Login\\FrmLogin.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T21:36:15.111Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FrmLogin.cs",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Login\\FrmLogin.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Gui\\Login\\FrmLogin.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Login\\FrmLogin.cs",
+              "RelativeToolTip": "WatchWinform\\Gui\\Login\\FrmLogin.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T21:36:21.219Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "OrderService.cs",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Service\\OrderService.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Service\\OrderService.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Service\\OrderService.cs",
+              "RelativeToolTip": "WatchWinform\\Service\\OrderService.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAwwCYAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T14:24:05.232Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ExportedHistoryLayout.cs",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Component\\ExportedHistoryCom\\ExportedHistoryLayout.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Gui\\Component\\ExportedHistoryCom\\ExportedHistoryLayout.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Component\\ExportedHistoryCom\\ExportedHistoryLayout.cs",
+              "RelativeToolTip": "WatchWinform\\Gui\\Component\\ExportedHistoryCom\\ExportedHistoryLayout.cs",
+              "ViewState": "AQIAAC8AAAAAAAAAAAAcwF8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T14:21:54.685Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "FrmHome.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Home\\FrmHome.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Gui\\Home\\FrmHome.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Home\\FrmHome.cs [Design]",
+              "RelativeToolTip": "WatchWinform\\Gui\\Home\\FrmHome.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T14:19:52.23Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ImportDetailService.cs",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Service\\ImportDetailService.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Service\\ImportDetailService.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Service\\ImportDetailService.cs",
+              "RelativeToolTip": "WatchWinform\\Service\\ImportDetailService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAHUAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T14:19:16.422Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ImportedHistoryLayout.cs",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Component\\ImportedHistoryCom\\ImportedHistoryLayout.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Gui\\Component\\ImportedHistoryCom\\ImportedHistoryLayout.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Component\\ImportedHistoryCom\\ImportedHistoryLayout.cs",
+              "RelativeToolTip": "WatchWinform\\Gui\\Component\\ImportedHistoryCom\\ImportedHistoryLayout.cs",
+              "ViewState": "AQIAAGoAAAAAAAAAAAAcwCEAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T14:19:06.668Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ImportedHistoryLayout.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Component\\ImportedHistoryCom\\ImportedHistoryLayout.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Gui\\Component\\ImportedHistoryCom\\ImportedHistoryLayout.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\winwin\\Copy\\WatchWinform\\Gui\\Component\\ImportedHistoryCom\\ImportedHistoryLayout.cs [Design]",
+              "RelativeToolTip": "..\\..\\winwin\\Copy\\WatchWinform\\Gui\\Component\\ImportedHistoryCom\\ImportedHistoryLayout.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T14:19:04.846Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ComponentImportedHistory.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Component\\ImportedHistoryCom\\ComponentImportedHistory.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Gui\\Component\\ImportedHistoryCom\\ComponentImportedHistory.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\winwin\\Copy\\WatchWinform\\Gui\\Component\\ImportedHistoryCom\\ComponentImportedHistory.cs [Design]",
+              "RelativeToolTip": "..\\..\\winwin\\Copy\\WatchWinform\\Gui\\Component\\ImportedHistoryCom\\ComponentImportedHistory.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T14:19:02.386Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ImportGlobal.cs",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Shared\\GlobalVar\\ImportGlobal.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Shared\\GlobalVar\\ImportGlobal.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Shared\\GlobalVar\\ImportGlobal.cs",
+              "RelativeToolTip": "WatchWinform\\Shared\\GlobalVar\\ImportGlobal.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAArwBUAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T13:47:43.279Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ImportDetail.cs",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Datas\\Models\\ImportDetail.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Datas\\Models\\ImportDetail.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Datas\\Models\\ImportDetail.cs",
+              "RelativeToolTip": "WatchWinform\\Datas\\Models\\ImportDetail.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAgAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T13:47:29.225Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "ComponentBrand.cs",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Component\\BrandCom\\ComponentBrand.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Gui\\Component\\BrandCom\\ComponentBrand.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Component\\BrandCom\\ComponentBrand.cs",
+              "RelativeToolTip": "WatchWinform\\Gui\\Component\\BrandCom\\ComponentBrand.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAMwCAAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T13:39:13.585Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ComponentImportedHistory.cs",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Component\\ImportedHistoryCom\\ComponentImportedHistory.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Gui\\Component\\ImportedHistoryCom\\ComponentImportedHistory.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Component\\ImportedHistoryCom\\ComponentImportedHistory.cs",
+              "RelativeToolTip": "WatchWinform\\Gui\\Component\\ImportedHistoryCom\\ComponentImportedHistory.cs",
+              "ViewState": "AQIAAIUAAAAAAAAAAAAtwHkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T13:38:24.977Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ViewPreImportLayout.cs",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Component\\ImportCom\\ViewPreImportLayout.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Gui\\Component\\ImportCom\\ViewPreImportLayout.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Component\\ImportCom\\ViewPreImportLayout.cs",
+              "RelativeToolTip": "WatchWinform\\Gui\\Component\\ImportCom\\ViewPreImportLayout.cs",
+              "ViewState": "AQIAAG8AAAAAAAAAAAAvwIkAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T13:38:10.76Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ComponentExportedHistory.cs",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Component\\ExportedHistoryCom\\ComponentExportedHistory.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Gui\\Component\\ExportedHistoryCom\\ComponentExportedHistory.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Component\\ExportedHistoryCom\\ComponentExportedHistory.cs",
+              "RelativeToolTip": "WatchWinform\\Gui\\Component\\ExportedHistoryCom\\ComponentExportedHistory.cs",
+              "ViewState": "AQIAAGsAAAAAAAAAAAAUwDkAAABVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T11:04:50.599Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "ComponentExportedHistory.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Component\\ExportedHistoryCom\\ComponentExportedHistory.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Gui\\Component\\ExportedHistoryCom\\ComponentExportedHistory.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\winwin\\Copy\\WatchWinform\\Gui\\Component\\ExportedHistoryCom\\ComponentExportedHistory.cs [Design]",
+              "RelativeToolTip": "..\\..\\winwin\\Copy\\WatchWinform\\Gui\\Component\\ExportedHistoryCom\\ComponentExportedHistory.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T11:04:46.659Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "ComponentExport.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Component\\ExportCom\\ComponentExport.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Gui\\Component\\ExportCom\\ComponentExport.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\winwin\\Copy\\WatchWinform\\Gui\\Component\\ExportCom\\ComponentExport.cs [Design]",
+              "RelativeToolTip": "..\\..\\winwin\\Copy\\WatchWinform\\Gui\\Component\\ExportCom\\ComponentExport.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T11:04:37.723Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "ComponentExported.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Component\\ExportCom\\ComponentExported.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Gui\\Component\\ExportCom\\ComponentExported.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\winwin\\Copy\\WatchWinform\\Gui\\Component\\ExportCom\\ComponentExported.cs [Design]",
+              "RelativeToolTip": "..\\..\\winwin\\Copy\\WatchWinform\\Gui\\Component\\ExportCom\\ComponentExported.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T11:04:33.512Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ComponentImported.cs",
+              "DocumentMoniker": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Component\\ImportCom\\ComponentImported.cs",
+              "RelativeDocumentMoniker": "WatchWinform\\Gui\\Component\\ImportCom\\ComponentImported.cs",
+              "ToolTip": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\phone_winform\\WatchWinform\\Gui\\Component\\ImportCom\\ComponentImported.cs",
+              "RelativeToolTip": "WatchWinform\\Gui\\Component\\ImportCom\\ComponentImported.cs",
+              "ViewState": "AQIAAGwAAAAAAAAAAIA5wIIAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T10:46:53.538Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DoAn2VADT")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a6282819de15fe12f0f75b75fbb9ea881bc887b1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5b54edebe31bf6c60264136abc68e784d0f2790a")]
 [assembly: System.Reflection.AssemblyProductAttribute("DoAn2VADT")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DoAn2VADT")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

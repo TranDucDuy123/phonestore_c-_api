@@ -1,0 +1,503 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{58B030B3-C8A2-48F8-B590-FD8FB96A7767}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WatchWinform</RootNamespace>
+    <AssemblyName>WatchWinform</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="API\ApiClient.cs" />
+    <Compile Include="API\ApiSettings.cs" />
+    <Compile Include="Datas\Models\Account.cs" />
+    <Compile Include="Datas\Models\Brand.cs" />
+    <Compile Include="Datas\Models\Cart.cs" />
+    <Compile Include="Datas\Models\Category.cs" />
+    <Compile Include="Datas\Models\Contact.cs" />
+    <Compile Include="Datas\Models\Customer.cs" />
+    <Compile Include="Datas\Models\Feedback.cs" />
+    <Compile Include="Datas\Models\Import.cs" />
+    <Compile Include="Datas\Models\ImportDetail.cs" />
+    <Compile Include="Datas\Models\Order.cs" />
+    <Compile Include="Datas\Models\OrderDetail.cs" />
+    <Compile Include="Datas\Models\Product.cs" />
+    <Compile Include="Datas\ViewModels\LoginReq.cs" />
+    <Compile Include="Datas\ViewModels\LoginRes.cs" />
+    <Compile Include="Extension\NumericUpDownColumn.cs" />
+    <Compile Include="Gui\Component\AboutCom\About.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\AboutCom\About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\AccountCom\AccountLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\AccountCom\AccountLayout.Designer.cs">
+      <DependentUpon>AccountLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\AccountCom\ComponentAccount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\AccountCom\ComponentAccount.Designer.cs">
+      <DependentUpon>ComponentAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\AccountCom\EditLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\AccountCom\EditLayout.Designer.cs">
+      <DependentUpon>EditLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\CustomerCom\CustomerLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\CustomerCom\CustomerLayout.Designer.cs">
+      <DependentUpon>CustomerLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\CustomerCom\ComponentCustomer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\CustomerCom\ComponentCustomer.Designer.cs">
+      <DependentUpon>ComponentCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\CustomerCom\EditLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\CustomerCom\EditLayout.Designer.cs">
+      <DependentUpon>EditLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\CategoryCom\CategoryLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\CategoryCom\CategoryLayout.Designer.cs">
+      <DependentUpon>CategoryLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\CategoryCom\ComponentCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\CategoryCom\ComponentCategory.Designer.cs">
+      <DependentUpon>ComponentCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\CategoryCom\EditLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\CategoryCom\EditLayout.Designer.cs">
+      <DependentUpon>EditLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\ExportCom\ComponentExport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\ExportCom\ComponentExport.Designer.cs">
+      <DependentUpon>ComponentExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\ExportCom\ComponentExported.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\ExportCom\ComponentExported.Designer.cs">
+      <DependentUpon>ComponentExported.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\ExportCom\ExportLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\ExportCom\ExportLayout.Designer.cs">
+      <DependentUpon>ExportLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\ExportCom\ViewPreExportLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\ExportCom\ViewPreExportLayout.Designer.cs">
+      <DependentUpon>ViewPreExportLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\ExportedHistoryCom\EditLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\ExportedHistoryCom\EditLayout.Designer.cs">
+      <DependentUpon>EditLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\ImportCom\ComponentImported.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\ImportCom\ComponentImported.Designer.cs">
+      <DependentUpon>ComponentImported.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\ImportCom\ComponentImport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\ImportCom\ComponentImport.Designer.cs">
+      <DependentUpon>ComponentImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\ImportCom\ViewPreImportLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\ImportCom\ViewPreImportLayout.Designer.cs">
+      <DependentUpon>ViewPreImportLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\ImportCom\ImportLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\ImportCom\ImportLayout.Designer.cs">
+      <DependentUpon>ImportLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\ExportedHistoryCom\ComponentExportDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\ExportedHistoryCom\ComponentExportDetail.Designer.cs">
+      <DependentUpon>ComponentExportDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\ExportedHistoryCom\ComponentExportedHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\ExportedHistoryCom\ComponentExportedHistory.Designer.cs">
+      <DependentUpon>ComponentExportedHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\ExportedHistoryCom\ExportedHistoryLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\ExportedHistoryCom\ExportedHistoryLayout.Designer.cs">
+      <DependentUpon>ExportedHistoryLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\ImportedHistoryCom\ComponentImportDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\ImportedHistoryCom\ComponentImportDetail.Designer.cs">
+      <DependentUpon>ComponentImportDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\ImportedHistoryCom\ComponentImportedHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\ImportedHistoryCom\ComponentImportedHistory.Designer.cs">
+      <DependentUpon>ComponentImportedHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\ImportedHistoryCom\EditLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\ImportedHistoryCom\EditLayout.Designer.cs">
+      <DependentUpon>EditLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\ImportedHistoryCom\ImportedHistoryLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\ImportedHistoryCom\ImportedHistoryLayout.Designer.cs">
+      <DependentUpon>ImportedHistoryLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\BrandCom\ComponentBrand.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\BrandCom\ComponentBrand.Designer.cs">
+      <DependentUpon>ComponentBrand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\BrandCom\EditLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\BrandCom\EditLayout.Designer.cs">
+      <DependentUpon>EditLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\BrandCom\BrandLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\BrandCom\BrandLayout.Designer.cs">
+      <DependentUpon>BrandLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\ProductCom\ComponentProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\ProductCom\ComponentProduct.Designer.cs">
+      <DependentUpon>ComponentProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\ProductCom\EditLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\ProductCom\EditLayout.Designer.cs">
+      <DependentUpon>EditLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Component\ProductCom\ProductLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Component\ProductCom\ProductLayout.Designer.cs">
+      <DependentUpon>ProductLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Home\FrmHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\Home\FrmHome.Designer.cs">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Login\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\Login\FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\AutoMapperCF.cs" />
+    <Compile Include="Helpers\DataGridViewTool.cs" />
+    <Compile Include="Helpers\HashMD5.cs" />
+    <Compile Include="Helpers\Utilities.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\CustomerService.cs" />
+    <Compile Include="Service\OrderDetailService.cs" />
+    <Compile Include="Service\ImportDetailService.cs" />
+    <Compile Include="Service\OrderService.cs" />
+    <Compile Include="Service\CategoryService.cs" />
+    <Compile Include="Service\BrandService.cs" />
+    <Compile Include="Service\ImportService.cs" />
+    <Compile Include="Service\ProductService.cs" />
+    <Compile Include="Service\AccountService.cs" />
+    <Compile Include="Shared\Constant\Role.cs" />
+    <Compile Include="Shared\GlobalVar\ExportGlobal.cs" />
+    <Compile Include="Shared\GlobalVar\ImportGlobal.cs" />
+    <Compile Include="Shared\GlobalVar\UserGlobal.cs" />
+    <Compile Include="Shared\Utils\BaseConst.cs" />
+    <Compile Include="Shared\Utils\Base\BaseResponse.cs" />
+    <Compile Include="Shared\Utils\ResStatusConst.cs" />
+    <Compile Include="Shared\Utils\StringExtension.cs" />
+    <EmbeddedResource Include="Gui\Component\AboutCom\About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\AccountCom\AccountLayout.resx">
+      <DependentUpon>AccountLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\AccountCom\ComponentAccount.resx">
+      <DependentUpon>ComponentAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\AccountCom\EditLayout.resx">
+      <DependentUpon>EditLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\CustomerCom\CustomerLayout.resx">
+      <DependentUpon>CustomerLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\CustomerCom\ComponentCustomer.resx">
+      <DependentUpon>ComponentCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\CustomerCom\EditLayout.resx">
+      <DependentUpon>EditLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\CategoryCom\CategoryLayout.resx">
+      <DependentUpon>CategoryLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\CategoryCom\ComponentCategory.resx">
+      <DependentUpon>ComponentCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\CategoryCom\EditLayout.resx">
+      <DependentUpon>EditLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\ExportCom\ComponentExport.resx">
+      <DependentUpon>ComponentExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\ExportCom\ComponentExported.resx">
+      <DependentUpon>ComponentExported.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\ExportCom\ExportLayout.resx">
+      <DependentUpon>ExportLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\ExportCom\ViewPreExportLayout.resx">
+      <DependentUpon>ViewPreExportLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\ExportedHistoryCom\EditLayout.resx">
+      <DependentUpon>EditLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\ImportCom\ComponentImported.resx">
+      <DependentUpon>ComponentImported.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\ImportCom\ComponentImport.resx">
+      <DependentUpon>ComponentImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\ImportCom\ViewPreImportLayout.resx">
+      <DependentUpon>ViewPreImportLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\ImportCom\ImportLayout.resx">
+      <DependentUpon>ImportLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\ExportedHistoryCom\ComponentExportDetail.resx">
+      <DependentUpon>ComponentExportDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\ExportedHistoryCom\ComponentExportedHistory.resx">
+      <DependentUpon>ComponentExportedHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\ExportedHistoryCom\ExportedHistoryLayout.resx">
+      <DependentUpon>ExportedHistoryLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\ImportedHistoryCom\ComponentImportDetail.resx">
+      <DependentUpon>ComponentImportDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\ImportedHistoryCom\ComponentImportedHistory.resx">
+      <DependentUpon>ComponentImportedHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\ImportedHistoryCom\EditLayout.resx">
+      <DependentUpon>EditLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\ImportedHistoryCom\ImportedHistoryLayout.resx">
+      <DependentUpon>ImportedHistoryLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\BrandCom\ComponentBrand.resx">
+      <DependentUpon>ComponentBrand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\BrandCom\EditLayout.resx">
+      <DependentUpon>EditLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\BrandCom\BrandLayout.resx">
+      <DependentUpon>BrandLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\ProductCom\ComponentProduct.resx">
+      <DependentUpon>ComponentProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\ProductCom\EditLayout.resx">
+      <DependentUpon>EditLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Component\ProductCom\ProductLayout.resx">
+      <DependentUpon>ProductLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Home\FrmHome.resx">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Login\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Image\FullHD\Product\" />
+    <Folder Include="Assets\Image\NewFolder1\" />
+    <Folder Include="Assets\Image\Product\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\truck.png" />
+    <None Include="Resources\system-update.png" />
+    <None Include="Resources\upload1.png" />
+    <None Include="Resources\undo.png" />
+    <None Include="Resources\view.png" />
+    <None Include="Resources\upload.png" />
+    <None Include="Resources\trash.png" />
+    <None Include="Resources\shopping-bag %282%29.png" />
+    <None Include="Resources\shopping-bag %281%29.png" />
+    <None Include="Resources\shopping-bag.png" />
+    <None Include="Resources\user %283%29.png" />
+    <None Include="Resources\abstract-digital-technology-background-with-concept-security-vector.jpg" />
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\default.jpg" />
+    <None Include="Resources\arrow.png" />
+    <None Include="Resources\check.png" />
+    <None Include="Resources\cargo-truck.png" />
+    <None Include="Resources\delivery-truck.png" />
+    <None Include="Resources\delivery-truck %281%29.png" />
+    <None Include="Resources\export.png" />
+    <None Include="Resources\categories.png" />
+    <None Include="Resources\brand.png" />
+    <None Include="Resources\customer-review %281%29.png" />
+    <None Include="Resources\customer-review.png" />
+    <None Include="Resources\customer-review %282%29.png" />
+    <None Include="Resources\export %282%29.png" />
+    <None Include="Resources\export %283%29.png" />
+    <None Include="Resources\export %284%29.png" />
+    <None Include="Resources\brand %281%29.png" />
+    <None Include="Resources\app.png" />
+    <None Include="Resources\customer-feedback.png" />
+    <None Include="Resources\fundraiser.png" />
+    <None Include="Resources\5d12d0e14bd2110a430aa44555a2bdcb.jpg" />
+    <None Include="Resources\crm.png" />
+    <Content Include="Resources\help-web-button.png" />
+    <None Include="Resources\history.png" />
+    <Content Include="Resources\home.png" />
+    <None Include="Resources\import.png" />
+    <None Include="Resources\import %281%29.png" />
+    <None Include="Resources\import %281%291.png" />
+    <None Include="Resources\import %282%29.png" />
+    <Content Include="Resources\information-button.png" />
+    <None Include="Resources\key.png" />
+    <None Include="Resources\key %282%29.png" />
+    <None Include="Resources\leave.png" />
+    <Content Include="Resources\list.png" />
+    <None Include="Resources\plus.png" />
+    <None Include="Resources\reject.png" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\provider.png" />
+    <None Include="Resources\provider1.png" />
+    <None Include="Resources\responsive.png" />
+    <None Include="Resources\login.png" />
+    <None Include="Resources\password.png" />
+    <None Include="Resources\person %281%29.png" />
+    <None Include="Resources\padlock.png" />
+    <None Include="Resources\provider %281%29.png" />
+    <None Include="Resources\logistic.png" />
+    <None Include="Resources\search.png" />
+    <None Include="Resources\search %281%29.png" />
+    <None Include="Resources\pie-chart.png" />
+    <Content Include="Resources\settings.png" />
+    <None Include="Resources\user %281%29.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
