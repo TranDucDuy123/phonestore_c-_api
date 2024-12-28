@@ -1,0 +1,33 @@
+﻿@model DoAn2VADT.Database.Entities.Coupon
+
+@{
+    ViewData["Title"] = "Chi tiết mã giảm giá";
+    Layout = "~/Areas/Admin/Views/Shared/_GlobalLayout.cshtml";
+}
+
+<h1>Chi tiết mã giảm giá</h1>
+
+<table class="table">
+    <tr>
+        <th>Mã</th>
+        <td>@Model.Code</td>
+    </tr>
+    <tr>
+        <th>Phần trăm giảm</th>
+        <td>@Model.Discount%</td>
+    </tr>
+    <tr>
+        <th>Ngày hết hạn</th>
+        <td>@Model.ExpiryDate.ToString("dd/MM/yyyy")</td>
+    </tr>
+    <tr>
+        <th>Ngày tạo</th>
+        <td>@Model.CreatedAt?.ToString("dd/MM/yyyy HH:mm")</td>
+    </tr>
+    <tr>
+        <th>Ngày cập nhật</th>
+        <td>@Model.UpdatedAt?.ToString("dd/MM/yyyy HH:mm")</td>
+    </tr>
+</table>
+
+<a asp-action="Index" class="btn btn-secondary">Quay lại</a>

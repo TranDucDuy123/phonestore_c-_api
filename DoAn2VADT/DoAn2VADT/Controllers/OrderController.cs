@@ -295,5 +295,24 @@ namespace DoAn2VADT.Controllers
             return Json(totalOrders);
         }
 
+        //[HttpPost]
+        //public IActionResult ApplyCoupon(string couponCode)
+        //{
+        //    // Kiểm tra mã giảm giá
+        //    var coupon = _context.Coupons.FirstOrDefault(c => c.Code == couponCode && c.ExpiryDate >= DateTime.Now);
+        //    if (coupon == null)
+        //    {
+        //        _notyfService.Error("Mã giảm giá không hợp lệ hoặc đã hết hạn!");
+        //        return RedirectToAction("Checkout");
+        //    }
+
+        //    // Lưu mã coupon vào session hoặc cơ sở dữ liệu
+        //    HttpContext.Session.SetString(Const.COUPONSESSION, coupon.Code);
+
+        //    // Hiển thị tổng tiền sau khi áp dụng giảm giá
+        //    TempData["Success"] = $"Áp dụng mã giảm giá '{coupon.Code}' thành công!";
+        //    return RedirectToAction("Checkout");
+        //}
+
     }
 }

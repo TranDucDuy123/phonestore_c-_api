@@ -156,6 +156,7 @@ namespace DoAn2VADT.Areas.Admin.Controllers
         }
 
         // POST: Category/Delete/Id
+        // POST: Category/Delete/Id
         [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -163,14 +164,44 @@ namespace DoAn2VADT.Areas.Admin.Controllers
         {
             if (_context.Categories == null)
             {
-                return Problem("Entity set 'AppDbContext.Categories'  is null.");
+                _notyfService.Error("Dữ liệu danh mục bị lỗi. Vui lòng thử lại sau!");
+                return RedirectToAction(nameof(Index));
             }
-            var brand = _context.Categories.Find(id);
-            _context.Categories.Remove(brand);
-            await _context.SaveChangesAsync();
-            _notyfService.Success("Xóa danh mục thành công");
+
+            // Tìm danh mục cần xóa
+            var category = await _context.Categories.FindAsync(id);
+
+            if (category == null)
+            {
+                _notyfService.Error("Danh mục không tồn tại.");
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Kiểm tra xem danh mục có liên kết với sản phẩm không
+            var relatedProducts = await _context.Products.AnyAsync(p => p.CategoryId == id);
+
+            if (relatedProducts)
+            {
+                _notyfService.Error("Không thể xóa danh mục này vì đang có sản phẩm liên kết.");
+                return RedirectToAction(nameof(Index));
+            }
+
+            try
+            {
+                // Xóa danh mục
+                _context.Categories.Remove(category);
+                await _context.SaveChangesAsync();
+                _notyfService.Success("Xóa danh mục thành công!");
+            }
+            catch (Exception ex)
+            {
+                _notyfService.Error($"Lỗi xảy ra trong quá trình xóa: {ex.Message}");
+            }
+
             return RedirectToAction(nameof(Index));
         }
+
+
 
         private bool CategoryExists(string id)
         {

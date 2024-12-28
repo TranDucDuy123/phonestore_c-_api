@@ -16,6 +16,15 @@ namespace DoAn2VADT.Database.Entities
         // Sản phẩm
         [ForeignKey("ProductId")]
         public Product Product { set; get; }
+
+        [DisplayName("Màu sắc")]
+        public Guid? ColorId { get; set; }
+
+        // Liên kết đến Color
+        [ForeignKey("ColorId")]
+        public Color Color { get; set; }
+
+
         // Thuộc người?
         public string SessionId { get; set; }
     }

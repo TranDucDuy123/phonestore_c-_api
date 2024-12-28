@@ -4269,12 +4269,20 @@
       "PackagePath": "staticwebassets\\images\\login\\login.jpg"
     },
     {
+      "Id": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\wwwroot\\images\\logo\\256_144_2.jpg",
+      "PackagePath": "staticwebassets\\images\\logo\\256_144_2.jpg"
+    },
+    {
       "Id": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\wwwroot\\images\\logo\\asus.jpg",
       "PackagePath": "staticwebassets\\images\\logo\\asus.jpg"
     },
     {
       "Id": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\wwwroot\\images\\logo\\dell.jpg",
       "PackagePath": "staticwebassets\\images\\logo\\dell.jpg"
+    },
+    {
+      "Id": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\wwwroot\\images\\logo\\logo-xiaomi-3035.jpg",
+      "PackagePath": "staticwebassets\\images\\logo\\logo-xiaomi-3035.jpg"
     },
     {
       "Id": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\wwwroot\\images\\logo\\macbook.jpg",

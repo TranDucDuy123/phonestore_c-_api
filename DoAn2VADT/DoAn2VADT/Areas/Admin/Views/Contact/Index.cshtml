@@ -1,0 +1,95 @@
+﻿@using PagedList.Core.Mvc
+@model PagedList.Core.IPagedList<DoAn2VADT.Database.Entities.Contact>
+@{
+    int CurrentPage = ViewBag.CurrentPage;
+    ViewData["Title"] = "Quản lý liên hệ";
+    Layout = "~/Areas/Admin/Views/Shared/_GlobalLayout.cshtml";
+}
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-controller="Dashboard" asp-action="Index" class="breadcrumb-item"><i class="fa-solid fa-house mr-1"></i>Trang chủ</a>
+            <span class="breadcrumb-item active">Danh sách liên hệ: trang @CurrentPage</span>
+        </nav>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="row m-b-30">
+            <div class="col-md-12">
+                <div class="row">
+                    <!-- Tìm kiếm liên hệ -->
+                    <div class="col-md-4">
+                        <div class="input-affix m-v-10">
+                            <i class="prefix-icon anticon anticon-search opacity-04"></i>
+                            <form method="get" asp-action="Index" asp-controller="Contact">
+                                <input id="keyword" name="searchKey" type="text" class="form-control" placeholder="Tìm kiếm liên hệ" value="@ViewBag.SearchKey">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive table-hover">
+            <table class="table align-middle mb-0 bg-white">
+                <thead class="bg-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Họ tên</th>
+                        <th>Email</th>
+                        <th>Số điện thoại</th>
+                        <th>Chủ đề</th>
+                        <th>Ngày gửi</th>
+                        <th class="text-center">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Name</td>
+                            <td>@item.Email</td>
+                            <td>@item.Phone</td>
+                            <td>@item.Topic</td>
+                            <td>@item.CreatedAt?.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td class="text-center">
+                                <a class="btn btn-primary fas fa-eye" asp-controller="Contact" asp-action="Details" asp-route-id="@item.Id"></a>
+                                <a class="btn btn-info fas fa-edit" asp-controller="Contact" asp-action="Edit" asp-route-id="@item.Id"></a>
+                                <a class="btn btn-danger far fa-trash-alt" asp-controller="Contact" asp-action="Delete" asp-route-id="@item.Id"></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div aria-label="Page navigation example">
+                <ul class="pagination">
+                    <pager class="pager-container" list="@Model" list="@Model" asp-controller="Contact" asp-action="Index" />
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Tìm kiếm liên hệ
+            $("#keyword").keyup(function () {
+                var searchKey = $("#keyword").val().trim();
+
+                if (searchKey !== "") {
+                    $.ajax({
+                        url: '/Admin/Contact/Index',
+                        type: 'GET',
+                        data: { searchKey: searchKey, page: 1 },
+                        success: function (data) {
+                            $(".table-responsive").html($(data).find(".table-responsive").html());
+                            $(".pagination-container").html($(data).find(".pagination-container").html());
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}

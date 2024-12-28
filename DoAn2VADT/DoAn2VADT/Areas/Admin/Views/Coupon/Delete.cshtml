@@ -1,0 +1,31 @@
+﻿@model DoAn2VADT.Database.Entities.Coupon
+
+@{
+    ViewData["Title"] = "Xóa mã giảm giá";
+    Layout = "~/Areas/Admin/Views/Shared/_GlobalLayout.cshtml";
+}
+
+<h1>Xóa mã giảm giá</h1>
+
+<p>Bạn có chắc chắn muốn xóa mã giảm giá này không?</p>
+
+<table class="table">
+    <tr>
+        <th>Mã</th>
+        <td>@Model.Code</td>
+    </tr>
+    <tr>
+        <th>Phần trăm giảm</th>
+        <td>@Model.Discount%</td>
+    </tr>
+    <tr>
+        <th>Ngày hết hạn</th>
+        <td>@Model.ExpiryDate.ToString("dd/MM/yyyy")</td>
+    </tr>
+</table>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</form>

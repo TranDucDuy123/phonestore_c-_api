@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "rbKLWg2SKEk40ETfHCgJ8KULBvpAKeyuoTyD9Pgl2NE=",
+  "Hash": "IRnIMVUOnA2V1S1UsrKYink3/wvw1RNq6urBE6uPaxY=",
   "Source": "DoAn2VADT",
   "BasePath": "_content/DoAn2VADT",
   "Mode": "Default",
@@ -20423,6 +20423,25 @@
       "OriginalItemSpec": "wwwroot\\images\\login\\login.jpg"
     },
     {
+      "Identity": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\wwwroot\\images\\logo\\256_144_2.jpg",
+      "SourceId": "DoAn2VADT",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\wwwroot\\",
+      "BasePath": "_content/DoAn2VADT",
+      "RelativePath": "images/logo/256_144_2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\logo\\256_144_2.jpg"
+    },
+    {
       "Identity": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\wwwroot\\images\\logo\\asus.jpg",
       "SourceId": "DoAn2VADT",
       "SourceType": "Discovered",
@@ -20459,6 +20478,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\logo\\dell.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\wwwroot\\images\\logo\\logo-xiaomi-3035.jpg",
+      "SourceId": "DoAn2VADT",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\wwwroot\\",
+      "BasePath": "_content/DoAn2VADT",
+      "RelativePath": "images/logo/logo-xiaomi-3035.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\logo\\logo-xiaomi-3035.jpg"
     },
     {
       "Identity": "C:\\Users\\dyly3\\source\\repos\\phonestore_c-_api\\DoAn2VADT\\DoAn2VADT\\wwwroot\\images\\logo\\macbook.jpg",

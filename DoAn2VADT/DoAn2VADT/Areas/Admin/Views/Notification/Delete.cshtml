@@ -1,0 +1,18 @@
+﻿@model DoAn2VADT.Database.Entities.Notification
+
+@{
+    ViewData["Title"] = "Xóa thông báo";
+    Layout = "~/Areas/Admin/Views/Shared/_GlobalLayout.cshtml";
+}
+
+<div class="page-header">
+    <h2>Xóa thông báo</h2>
+</div>
+
+<p>Bạn có chắc muốn xóa thông báo: <strong>@Model.Message</strong> không?</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+</form>

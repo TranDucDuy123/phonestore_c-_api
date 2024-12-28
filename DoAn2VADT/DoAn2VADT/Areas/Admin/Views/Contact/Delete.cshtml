@@ -1,0 +1,23 @@
+﻿@model DoAn2VADT.Database.Entities.Contact
+@{
+    ViewData["Title"] = "Xóa liên hệ";
+    Layout = "~/Areas/Admin/Views/Shared/_GlobalLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h5>Xóa liên hệ</h5>
+    </div>
+    <div class="card-body">
+        <p>Bạn có chắc chắn muốn xóa liên hệ sau?</p>
+        <p><strong>Họ tên:</strong> @Model.Name</p>
+        <p><strong>Email:</strong> @Model.Email</p>
+        <p><strong>Số điện thoại:</strong> @Model.Phone</p>
+    </div>
+    <div class="card-footer">
+        <form method="post" asp-action="Delete" asp-route-id="@Model.Id">
+            <button type="submit" class="btn btn-danger">Xóa</button>
+            <a class="btn btn-secondary" asp-action="Index">Hủy</a>
+        </form>
+    </div>
+</div>

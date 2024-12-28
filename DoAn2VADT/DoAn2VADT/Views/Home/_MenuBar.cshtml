@@ -100,12 +100,12 @@
                     else
                     {
                     // Hiển thị một biểu tượng chờ hoặc thông tin mặc định
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown" id="nav-item-1">
                         <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-user-check"></i>
                             <span id="user-name">Đang tải...</span> <!-- Vị trí hiển thị tên người dùng -->
                         </a>
-                        <div class="dropdown-menu" style="font-size: 0.8em;">
+                        <div class="dropdown-menu" id="dropdown-menu-1" style="font-size: 0.8em;">
                             <a class="dropdown-item text-center pl-2 pb-1" href="@Url.Action("Profile", "Home")"><i class="fa-solid fa-circle-info mr-1"></i>Thông tin tài khoản</a>
                             <a class="dropdown-item pl-2" href="@Url.Action("Logout", "Home")"><i class="fa-solid fa-arrow-right-from-bracket mr-1"></i>Đăng xuất</a>
                         </div>
@@ -173,22 +173,17 @@
         });
     </script>
 
+
+
     <style>
-        /* Đảm bảo dropdown không bị lệch khỏi vị trí */
-        .nav-item.dropdown .dropdown-menu {
-            position: absolute;
-            top: 100%; /* Đưa menu xuống dưới của item */
-            left: -100%; /* Đặt menu từ trái của item */
-            z-index: 1000; /* Đảm bảo dropdown không bị che khuất */
-            min-width: 160px; /* Cố định chiều rộng của dropdown nếu cần */
+        #nav-item-1{
+            position:relative;
         }
-
-        /* Tùy chỉnh thêm để dropdown không bị lệch */
-        .navbar-nav {
-            position: relative;
+        #dropdown-menu-1{
+            position:absolute;
+            top:100%;
+            left:-100%;
         }
-
     </style>
-
 
 

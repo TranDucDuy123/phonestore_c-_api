@@ -1,0 +1,23 @@
+﻿@model DoAn2VADT.Database.Entities.Contact
+@{
+    ViewData["Title"] = "Chi tiết liên hệ";
+    Layout = "~/Areas/Admin/Views/Shared/_GlobalLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h5>Thông tin liên hệ</h5>
+    </div>
+    <div class="card-body">
+        <p><strong>Họ tên:</strong> @Model.Name</p>
+        <p><strong>Email:</strong> @Model.Email</p>
+        <p><strong>Số điện thoại:</strong> @Model.Phone</p>
+        <p><strong>Chủ đề:</strong> @Model.Topic</p>
+        <p><strong>Nội dung:</strong> @Model.Message</p>
+        <p><strong>Ngày gửi:</strong> @Model.CreatedAt?.ToString("dd/MM/yyyy HH:mm")</p>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-secondary" asp-action="Index">Quay lại</a>
+    </div>
+</div>
+

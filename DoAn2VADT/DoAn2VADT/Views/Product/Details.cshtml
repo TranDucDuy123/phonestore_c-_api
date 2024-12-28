@@ -36,7 +36,7 @@
                                 <input type="radio" id="star1"  value="1"/>
                                 <label for="star1" title="Kém">1 star</label>
                         </div>
-                        <span>3 Đánh giá</span>
+                        <span>Đánh giá</span>
                     </div>
                     @{
                         if (Model.Discount != null)
@@ -57,33 +57,63 @@
                     </div>
                      
                 </div>
-                <div class="product-colors">
+               @*  <div class="product-colors">
                     <label for="color">Chọn màu:</label>
                     <select id="color" name="colorId" class="form-control">
                      @foreach (var productColor in Model.ProductColors)
                         {
+                            var isOutOfStock = productColor.Quantity <= 0;
                             <option value="@productColor.ColorId" id="colorOption_@productColor.ColorId">
-                                @productColor.Color.Name - @(productColor.Quantity > 0 ? "Còn hàng" : "Hết hàng")
+                                @productColor.Color.Name @(isOutOfStock ? "(Hết hàng)" : "")
                             </option>
                         }
                     </select>
                 </div>
 
-
                 <div class="product-count">
-                    @using (Html.BeginForm("AddToCart", "Cart"))
+                    @using (Html.BeginForm("AddToCart", "Cart", FormMethod.Post))
                     {
-                            <label for="size">Số lượng</label>
-                            <div class="display-flex">
-                                <div class="qtyminus">-</div>
-                                <input type="text" name="quantity" value="1" class="qty">
-                                <div class="qtyplus">+</div>
-                            </div>
-                            <input type="hidden" name="productId" value="@Model.Id" />
-                            <input type="submit" value="Thêm vào giỏ hàng" class="round-black-btn">
+                        <label for="size">Số lượng</label>
+                        <div class="display-flex">
+                            <div class="qtyminus">-</div>
+                            <input type="text" name="quantity" value="1" class="qty">
+                            <div class="qtyplus">+</div>
+                        </div>
+                        <input type="hidden" name="productId" value="@Model.Id" />
+                        <input type="submit" value="Thêm vào giỏ hàng" class="round-black-btn">
                     }
+                </div> *@
 
+                   <div class="product-count">
+                    @using (Html.BeginForm("AddToCart", "Cart", FormMethod.Post))
+                    {
+                        <label for="size">Số lượng</label>
+                        <div class="display-flex">
+                            <div class="qtyminus">-</div>
+                            <input type="text" name="quantity" value="1" class="qty">
+                            <div class="qtyplus">+</div>
+                        </div>
+
+                        <!-- Dropdown chọn màu -->
+                        <label for="color">Chọn màu:</label>
+                        <select id="color" name="colorId" class="form-control">
+                            @foreach (var productColor in Model.ProductColors)
+                            {
+                                var isOutOfStock = productColor.Quantity <= 0;
+                                <option value="@productColor.ColorId" id="colorOption_@productColor.ColorId">
+                                    @productColor.Color.Name @(isOutOfStock ? "(Hết hàng)" : "")
+                                </option>
+                            }
+                        </select>
+
+                        <!-- ID sản phẩm -->
+                        <input type="hidden" name="productId" value="@Model.Id" />
+
+                        <!-- Nút thêm vào giỏ hàng -->
+                        <input type="submit" value="Thêm vào giỏ hàng" class="round-black-btn">
+                    }
                 </div>
+
             </div>
         </div>
     </div>
@@ -186,6 +216,14 @@
                     var now = $(".qty").val();
                     if ($.isNumeric(now)) {
                         $(".qty").val(parseInt(now) + 1);
+                    }
+                });
+            // Kiểm tra trước khi gửi
+                $("form").on("submit", function () {
+                    var selectedColor = $("#color").val();
+                    if (!selectedColor) {
+                        alert("Vui lòng chọn màu.");
+                        return false; // Dừng form submit
                     }
                 });
             });

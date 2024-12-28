@@ -56,6 +56,16 @@
                     <span class="title">Quản lý mặt hàng </span>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a asp-action="Index" asp-controller="Coupon">
+                    <span class="icon-holder">
+                        <i class="fa-solid fa-ticket"></i>
+                    </span>
+                    <span class="title">Quản lý mã giảm giá</span>
+                </a>
+            </li>
+
             <li class="nav-item">
                 <a asp-controller="Brand" asp-action="Index">
                     <span class="icon-holder">
@@ -79,6 +89,24 @@
                         <i class="fas fa-user-friends"></i>
                     </span>
                     <span class="title">Quản lý khách hàng</span>
+                </a>
+            </li>
+            <!-- Thêm mục Quản lý thông báo -->
+            <li class="nav-item">
+                <a asp-controller="Notification" asp-action="Index">
+                    <span class="icon-holder">
+                        <i class="fa-solid fa-bell"></i>
+                    </span>
+                    <span class="title">Quản lý thông báo</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a asp-controller="Contact" asp-action="Index">
+                    <span class="icon-holder">
+                        <i class="fa-solid fa-bell"></i>
+                    </span>
+                    <span class="title">Quản lý liên hệ</span>
                 </a>
             </li>
 

@@ -49,6 +49,15 @@ namespace DoAn2VADT.Database.Entities
         [ForeignKey("UpdateUserId")]
         public Account Account { set; get; }
 
+
+        // Mã giảm giá
+        [DisplayName("Coupon ID")]
+        public Guid? CouponId { get; set; }
+
+        [ForeignKey("CouponId")]
+        public Coupon Coupon { get; set; }
+
+
         public ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

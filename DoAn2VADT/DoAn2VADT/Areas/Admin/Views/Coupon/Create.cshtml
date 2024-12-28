@@ -1,0 +1,28 @@
+﻿@model DoAn2VADT.Database.Entities.Coupon
+
+@{
+    ViewData["Title"] = "Thêm mã giảm giá";
+    Layout = "~/Areas/Admin/Views/Shared/_GlobalLayout.cshtml";
+}
+
+<h1>Thêm mã giảm giá</h1>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="Code">Mã giảm giá</label>
+        <input type="text" asp-for="Code" class="form-control" />
+        <span asp-validation-for="Code" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Discount">Phần trăm giảm</label>
+        <input type="number" asp-for="Discount" class="form-control" />
+        <span asp-validation-for="Discount" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="ExpiryDate">Ngày hết hạn</label>
+        <input type="date" asp-for="ExpiryDate" class="form-control" />
+        <span asp-validation-for="ExpiryDate" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Lưu</button>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</form>

@@ -1,0 +1,134 @@
+﻿@using PagedList.Core.Mvc
+@model PagedList.Core.IPagedList<DoAn2VADT.Database.Entities.Coupon>
+
+@{
+    ViewData["Title"] = "Danh sách mã giảm giá";
+    Layout = "~/Areas/Admin/Views/Shared/_GlobalLayout.cshtml";
+}
+
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-controller="Dashboard" asp-action="Index" class="breadcrumb-item">
+                <i class="fa-solid fa-house mr-1"></i>Trang chủ
+            </a>
+            <span class="breadcrumb-item active">Danh sách mã giảm giá</span>
+        </nav>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <form method="get">
+                    <div class="input-group">
+                        <input type="text" name="searchKey" class="form-control" placeholder="Tìm kiếm mã giảm giá" value="@ViewBag.SearchKey" />
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6 text-right">
+                <a class="btn btn-primary" asp-controller="Coupon" asp-action="Create">
+                    <i class="anticon anticon-plus-circle mr-2"></i>Thêm mã giảm giá
+                </a>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Mã giảm giá</th>
+                        <th>Phần trăm giảm</th>
+                        <th>Ngày hết hạn</th>
+                        <th>Chức năng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Any())
+                    {
+                        int index = (Model.PageNumber - 1) * Model.PageSize + 1;
+                        foreach (var coupon in Model)
+                        {
+                            <tr>
+                                <td>@index</td>
+                                <td>@coupon.Code</td>
+                                <td>@coupon.Discount%</td>
+                                <td>@coupon.ExpiryDate.ToString("dd/MM/yyyy")</td>
+                                <td>
+                                    <a asp-controller="Coupon" asp-action="Details" asp-route-id="@coupon.Id"
+                                       class="btn btn-sm btn-info">Chi tiết</a>
+                                    <a asp-controller="Coupon" asp-action="Edit" asp-route-id="@coupon.Id"
+                                       class="btn btn-sm btn-warning">Sửa</a>
+                                    <a asp-controller="Coupon" asp-action="Delete" asp-route-id="@coupon.Id"
+                                       class="btn btn-sm btn-danger">Xóa</a>
+                                </td>
+                            </tr>
+                            index++;
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="5" class="text-center">Không có mã giảm giá nào</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination-container">
+            @if (Model.HasPreviousPage)
+            {
+                <a class="btn btn-light" href="@Url.Action("Index", new { page = Model.PageNumber - 1, searchKey = ViewBag.SearchKey })">« Trước</a>
+            }
+
+            @for (int i = 1; i <= Model.PageCount; i++)
+            {
+                if (i == Model.PageNumber)
+                {
+                    <span class="btn btn-primary">@i</span>
+                }
+                else
+                {
+                    <a class="btn btn-light" href="@Url.Action("Index", new { page = i, searchKey = ViewBag.SearchKey })">@i</a>
+                }
+            }
+
+            @if (Model.HasNextPage)
+            {
+                <a class="btn btn-light" href="@Url.Action("Index", new { page = Model.PageNumber + 1, searchKey = ViewBag.SearchKey })">Tiếp »</a>
+            }
+        </div>
+
+    </div>
+</div>
+<<style>
+     
+     .table-hover tbody tr:hover {
+         background-color: #f5f5f5;
+     }
+
+     .table-bordered th,
+     .table-bordered td {
+         border: 1px solid #dee2e6;
+     }
+
+     .thead-dark th {
+         /* background-color: #343a40; */
+         color: #fff;
+     }
+
+     .table-row:nth-child(even) {
+         background-color: #f9f9f9;
+     }
+
+     .table-row:nth-child(odd) {
+         background-color: #fff;
+     }
+
+</style>

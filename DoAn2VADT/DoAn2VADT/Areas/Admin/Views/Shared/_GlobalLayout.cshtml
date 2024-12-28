@@ -61,60 +61,19 @@
                                         <i class="anticon anticon-bell"></i>
                                         <span class="m-l-10">Notification</span>
                                     </p>
-                                    <a class="btn-sm btn-default btn" href="javascript:void(0);">
+                                    <a class="btn-sm btn-default btn" href="@Url.Action("Index", "Notification", new { Area = "Admin" })">
                                         <small>View All</small>
                                     </a>
                                 </div>
                                 <div class="relative">
-                                    <div class="overflow-y-auto relative scrollable" style="max-height: 300px">
-                                        <a href="javascript:void(0);" class="dropdown-item d-block p-15 border-bottom">
-                                            <div class="d-flex">
-                                                <div class="avatar avatar-blue avatar-icon">
-                                                    <i class="anticon anticon-mail"></i>
-                                                </div>
-                                                <div class="m-l-15">
-                                                    <p class="m-b-0 text-dark">You received a new message</p>
-                                                    <p class="m-b-0"><small>8 min ago</small></p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="javascript:void(0);" class="dropdown-item d-block p-15 border-bottom">
-                                            <div class="d-flex">
-                                                <div class="avatar avatar-cyan avatar-icon">
-                                                    <i class="anticon anticon-user-add"></i>
-                                                </div>
-                                                <div class="m-l-15">
-                                                    <p class="m-b-0 text-dark">New user registered</p>
-                                                    <p class="m-b-0"><small>7 hours ago</small></p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="javascript:void(0);" class="dropdown-item d-block p-15 border-bottom">
-                                            <div class="d-flex">
-                                                <div class="avatar avatar-red avatar-icon">
-                                                    <i class="anticon anticon-user-add"></i>
-                                                </div>
-                                                <div class="m-l-15">
-                                                    <p class="m-b-0 text-dark">System Alert</p>
-                                                    <p class="m-b-0"><small>8 hours ago</small></p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="javascript:void(0);" class="dropdown-item d-block p-15 ">
-                                            <div class="d-flex">
-                                                <div class="avatar avatar-gold avatar-icon">
-                                                    <i class="anticon anticon-user-add"></i>
-                                                </div>
-                                                <div class="m-l-15">
-                                                    <p class="m-b-0 text-dark">You have a new update</p>
-                                                    <p class="m-b-0"><small>2 days ago</small></p>
-                                                </div>
-                                            </div>
-                                        </a>
+                                    <div class="overflow-y-auto relative scrollable" style="max-height: 300px" id="notification-container">
+                                        <!-- Notifications will be dynamically loaded here -->
+                                        <p class="text-center text-muted p-2" id="no-notification-message">No new notifications.</p>
                                     </div>
                                 </div>
                             </div>
                         </li>
+
                         <li class="dropdown dropdown-animated scale-left">
                             <div class="pointer" data-toggle="dropdown">
                                 <div class="avatar avatar-image  m-h-10 m-r-15">
@@ -211,3 +170,43 @@
 </body>
 
 </html>
+<script>
+    $(document).ready(function () {
+        // Khi dropdown được mở
+        $('.dropdown.dropdown-animated.scale-left > a').on('click', function () {
+            // Kiểm tra nếu đã tải thông báo hay chưa
+            if (!$('#notification-container').hasClass('loaded')) {
+                $.ajax({
+                    url: '/Admin/Notification/GetUserNotifications', // Đường dẫn tới API
+                    method: 'GET',
+                    success: function (data) {
+                        $('#notification-container').addClass('loaded'); // Đánh dấu đã tải xong
+                        $('#notification-container').empty(); // Xóa nội dung cũ
+                        if (data.length > 0) {
+                            data.forEach(function (notification) {
+                                $('#notification-container').append(`
+                                        <a href="javascript:void(0);" class="dropdown-item d-block p-15 border-bottom">
+                                            <div class="d-flex">
+                                                <div class="avatar avatar-blue avatar-icon">
+                                                    <i class="anticon anticon-mail"></i>
+                                                </div>
+                                                <div class="m-l-15">
+                                                    <p class="m-b-0 text-dark">${notification.message}</p>
+                                                    <p class="m-b-0"><small>${new Date(notification.createdAt).toLocaleString()}</small></p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    `);
+                            });
+                        } else {
+                            $('#notification-container').html('<p class="text-center text-muted p-2">No new notifications.</p>');
+                        }
+                    },
+                    error: function () {
+                        $('#notification-container').html('<p class="text-center text-danger p-2">Failed to load notifications.</p>');
+                    }
+                });
+            }
+        });
+    });
+</script>

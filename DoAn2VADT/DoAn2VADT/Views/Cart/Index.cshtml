@@ -1,6 +1,10 @@
 ﻿@using AspNetCoreHero.ToastNotification.Abstractions
 @inject INotyfService notyfService
 @model List<DoAn2VADT.Database.Entities.Cart>
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@using Newtonsoft.Json
+
+
 @{
     ViewData["Title"] = "Giỏ hàng";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -32,46 +36,64 @@
                 <div class="card">
                     @foreach (var item in Model)
                     {
-                                <div class="row p-2">
-                                    <div class="col-md-6">
-                                            <img src="~/images/product/@item.Product.Image" alt="@item.Product.Name">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="product-dtl">
-                                            <div class="product-info">
-                                                <div class="product-name"><h5>@item.Product.Name</h5></div>
+                        <div class="row p-2">
+                            <div class="col-md-6">
+                                <img src="~/images/product/@item.Product.Image" alt="@item.Product.Name">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="product-dtl">
+                                    <div class="product-info">
+                                        <div class="product-name">
+                                            <h5>@item.Product.Name</h5>
+                                        </div>
                                         @{
                                             if (item.Product.Discount != null)
                                             {
-                                                                <div class="product-price-discount"><span>@((item.Product.Price - item.Product.Discount)?.ToString("n0")) VNĐ</span><span class="line-through">@((item.Product.Price)?.ToString("n0")) VNĐ</span></div>
+                                                <div class="product-price-discount">
+                                                    <span>@((item.Product.Price - item.Product.Discount)?.ToString("n0")) VNĐ</span>
+                                                    <span class="line-through">@((item.Product.Price)?.ToString("n0")) VNĐ</span>
+                                                </div>
                                             }
                                             else
                                             {
-                                                                <div class="product-price-discount"><span>@((item.Product.Price)?.ToString("n0")) VNĐ</span><span class="line-through"></span></div>
+                                                <div class="product-price-discount">
+                                                    <span>@((item.Product.Price)?.ToString("n0")) VNĐ</span>
+                                                </div>
                                             }
                                         }
+                                    </div>
+                                    @if (item.ColorId != null)
+                                    {
+                                        var color = item.Product.ProductColors.FirstOrDefault(pc => pc.ColorId == item.ColorId);
+                                        if (color != null)
+                                        {
+                                            <div class="product-color">
+                                                <strong>Màu:</strong> @color.Color.Name
+                                                <div style="background-color:@color.Color.HexCode; width:20px; height:20px; display:inline-block; border:1px solid #000; margin-left:5px;"></div>
                                             </div>
-                                            <div class="description text-muted">Kho: @item.Product.Quantity</div>
-                                            <div class="product-count" style="margin-bottom:0px !important">
-                                                <div class="display-flex">  
-                                                    <div class="qtyminus decre" data-productid="@item.Product.Id">-</div>
-                                                    <input id="@($"quantity-{item.Product.Id}")" type="text" name="quantity" readonly value="@item.Quantity" class="qty">
-                                                    <div class="qtyplus incre" data-productid="@item.Product.Id">+</div>
-                                                    <div class="ml-auto">
+                                        }
+                                    }
+                                    <div class="description text-muted">Kho: @item.Product.Quantity</div>
+                                    <div class="product-count" style="margin-bottom:0px !important">
+                                        <div class="display-flex">
+                                            <div class="qtyminus decre" data-productid="@item.Product.Id">-</div>
+                                            <input id="@($"quantity-{item.Product.Id}")" type="text" name="quantity" readonly value="@item.Quantity" class="qty">
+                                            <div class="qtyplus incre" data-productid="@item.Product.Id">+</div>
+                                            <div class="ml-auto">
                                                 <a href="@Url.Action("RemoveCart", "Cart", new { productid = item.Product.Id })"
                                                    class="btn btn-danger text-center"
                                                    onclick="return confirmDelete()">
                                                     <i class="fa-solid fa-trash mr-2"></i>Xóa
                                                 </a>
-
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
                     }
-                    </div> <!-- card.// -->
+                </div> <!-- card.// -->
+
                 <div class="alert alert-success mt-3">
                     <p class="icontext"><i class="fa-solid fa-truck-fast fa-bounce"></i> Giao hàng nhanh trong 1 - 2 ngày</p>
                 </div>
@@ -79,44 +101,69 @@
             <aside class="col-md-4">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <form>
+                        <form method="post" action="@Url.Action("ApplyCoupon", "Cart")">
                             <div class="form-group">
-                                <label>Have coupon?</label>
+                                <label for="couponCode">Nhập mã giảm giá:</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="" placeholder="Coupon code">
+                                    <input type="text" class="form-control" id="couponCode" name="couponCode" placeholder="Coupon code" required>
                                     <span class="input-group-append">
-                                        <button class="round-black-btn ml-2 mt-0 px-3">Apply</button>
+                                        <button class="round-black-btn ml-2 mt-0 px-3">Áp dụng</button>
                                     </span>
                                 </div>
                             </div>
                         </form>
-                    </div> <!-- card-body.// -->
+                    </div>
+                </div>
+
                 </div> <!-- card .// -->
                 <div class="card">
                     <div class="card-body">
 
-                        <dl>
+                <dl>
+                    <dt>Tổng tiền:</dt>
+                    @{
+                        decimal? total = 0;
+                        var couponJson = HttpContextAccessor.HttpContext?.Session.GetString("APPLIED_COUPON");
+                        var coupon = couponJson != null
+                        ? JsonConvert.DeserializeObject<DoAn2VADT.Database.Entities.Coupon>(couponJson)
+                        : null;
+                        decimal discountAmount = 0;
 
-                            <dt>Tổng tiền:</dt>
-                            @{
-                                decimal? total = 0;
-                                if (Model.Count > 0)
-                                {
-                                    foreach (var item in Model)
-                                    {
-                                        if (item.Product.Discount != null)
-                                        {
-                                            total += (item.Product.Price - item.Product.Discount) * item.Quantity;
-                                        }
-                                        else
-                                        {
-                                            total += item.Product.Price * item.Quantity;
-                                        }
-                                    }
-                                    <dd class="text-right">@(total?.ToString("n0")) VNĐ</dd>
-                                }
+                        // Tính tổng tiền
+                        if (Model.Count > 0)
+                        {
+                            foreach (var item in Model)
+                            {
+                                var priceAfterProductDiscount = item.Product.Price - (item.Product.Discount ?? 0);
+                                total += priceAfterProductDiscount * item.Quantity;
                             }
-                            </dl>
+
+                            // Áp dụng giảm giá từ coupon (nếu có)
+                            if (coupon != null)
+                            {
+                                discountAmount = total.Value * coupon.Discount / 100;
+                                total -= discountAmount;
+                            }
+
+                            // Hiển thị tổng tiền ban đầu
+                            <dd class="text-right">@total?.ToString("n0") VNĐ</dd>
+                        }
+                    }
+
+                    @if (coupon != null)
+                    {
+                        <dt>Khuyến mãi:</dt>
+                        <dd class="text-right text-success">-@discountAmount.ToString("n0") VNĐ</dd>
+                    }
+
+                    <dt>Phí giao hàng:</dt>
+                    <dd class="text-right">@((Model.Count > 0) ? "30,000 VNĐ" : "0 VNĐ")</dd>
+
+                    <dt>Tổng cộng:</dt>
+                    <dd class="text-right"><strong>@((total + (Model.Count > 0 ? 30000 : 0))?.ToString("n0")) VNĐ</strong></dd>
+                </dl>
+
+
 
                         <dl>
                             <dt>Phí giao hàng:</dt>

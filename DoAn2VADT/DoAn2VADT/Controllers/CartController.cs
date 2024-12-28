@@ -39,7 +39,13 @@ namespace DoAn2VADT.Controllers
         List<Cart> GetCart()
         {
             string sessionId = HttpContext.Session.GetString(Const.CARTSESSION).ToString();
-            var carts = _context.Carts.Where(x => x.SessionId == sessionId).Include(x => x.Product).OrderByDescending(x => x.CreatedAt).ToList();
+            var carts = _context.Carts
+                .Include(x => x.Product)
+                .ThenInclude(p => p.ProductColors)
+                .ThenInclude(pc => pc.Color)
+                .Where(x => x.SessionId == sessionId)
+                .OrderByDescending(x => x.CreatedAt)
+                .ToList();
             return carts;
         }
 
@@ -128,51 +134,72 @@ namespace DoAn2VADT.Controllers
             return Ok();
         }
 
+
         [HttpPost]
-        public IActionResult AddToCart(string productid, string quantity)
+        public IActionResult AddToCart(string productid, Guid? colorId, int quantity)
         {
-            if (CheckQuantity(productid, Int32.Parse(quantity)))
+            // Lấy Session ID hoặc tạo mới nếu không tồn tại
+            var sessionId = HttpContext.Session.GetString(Const.CARTSESSION);
+            if (string.IsNullOrEmpty(sessionId))
             {
-                var proId = productid.ToString();
-                var prod = _context.Products.FirstOrDefault(p => p.Id == proId);
-                if (prod == null)
-                    return NotFound();
+                sessionId = Guid.NewGuid().ToString();
+                HttpContext.Session.SetString(Const.CARTSESSION, sessionId);
+            }
 
-                // Xử lý đưa vào Cart ...
-                var carts = GetCart();
-                var cartitem = carts.Find(p => p.Product.Id == proId);
-                if (cartitem != null)
-                {
-                    // Đã tồn tại, tăng thêm 1
-                    cartitem.Quantity += Int32.Parse(quantity);
-                    cartitem.UpdatedAt = DateTime.Now;
-                    _notyfService.Information("Sản phầm đã được thêm vào giỏ hàng trước đó, số lượng cập nhật đã được cập nhật");
-                }
-                else
-                {
-                    //  Thêm mới
-                    _context.Carts.Add(new Cart()
-                    {
-                        Id = Guid.NewGuid().ToString(),
-                        ProductId = proId,
-                        Quantity = Int32.Parse(quantity),
-                        SessionId = HttpContext.Session.GetString(Const.CARTSESSION).ToString(),
-                        CreatedAt = DateTime.Now,
-                    });
-                    _notyfService.Success("Đã thêm sản phẩm vào giỏ hàng");
-                }
-                // Lưu cart
-                _context.SaveChanges();
+            // Lấy sản phẩm và màu từ cơ sở dữ liệu
+            var product = _context.Products
+                .Include(p => p.ProductColors)
+                .FirstOrDefault(p => p.Id == productid);
 
-                // Chuyển đến trang hiện thị Cart
-                return RedirectToAction("Index");
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            // Lấy thông tin màu đã chọn
+            var selectedColor = product.ProductColors.FirstOrDefault(pc => pc.ColorId == colorId);
+            if (selectedColor == null || selectedColor.Quantity < quantity)
+            {
+                _notyfService.Error("Số lượng sản phẩm không đủ!");
+                return RedirectToAction("Details", "Product", new { id = productid });
+            }
+
+            // Tìm sản phẩm với màu đã chọn trong giỏ hàng
+            var cartItem = _context.Carts.FirstOrDefault(c =>
+                c.ProductId == productid &&
+                c.ColorId == colorId &&
+                c.SessionId == sessionId);
+
+            if (cartItem != null)
+            {
+                // Nếu sản phẩm với màu này đã tồn tại, cập nhật số lượng
+                cartItem.Quantity += quantity;
+                cartItem.UpdatedAt = DateTime.Now;
+                _context.Carts.Update(cartItem);
+                _notyfService.Information("Cập nhật số lượng sản phẩm trong giỏ hàng.");
             }
             else
             {
-                _notyfService.Error("Số lượng sản phẩm không đủ!");
-                return RedirectToAction("Details", "Product", new { id=productid });
+                // Nếu sản phẩm với màu này chưa tồn tại, thêm mới
+                var newCartItem = new Cart
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    ProductId = productid,
+                    ColorId = colorId,
+                    Quantity = quantity,
+                    SessionId = sessionId,
+                    CreatedAt = DateTime.Now,
+                };
+                _context.Carts.Add(newCartItem);
+                _notyfService.Success("Thêm sản phẩm vào giỏ hàng thành công.");
             }
+
+            // Lưu thay đổi vào cơ sở dữ liệu
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
+
+
 
         public IActionResult RemoveCart(string productid)
         {
@@ -409,6 +436,40 @@ namespace DoAn2VADT.Controllers
             }
             base.Dispose(disposing);
         }
+
+        [HttpPost]
+        public IActionResult ApplyCoupon(string couponCode)
+        {
+            if (string.IsNullOrEmpty(couponCode))
+            {
+                _notyfService.Error("Vui lòng nhập mã giảm giá.");
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Tìm mã giảm giá trong cơ sở dữ liệu
+            var coupon = _context.Coupons.FirstOrDefault(c => c.Code == couponCode);
+
+            if (coupon == null)
+            {
+                _notyfService.Error("Mã giảm giá không tồn tại.");
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Kiểm tra hạn sử dụng
+            if (coupon.ExpiryDate < DateTime.Today)
+            {
+                _notyfService.Warning("Mã giảm giá đã hết hạn.");
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Lưu mã giảm giá vào session
+            HttpContext.Session.SetString("APPLIED_COUPON", JsonConvert.SerializeObject(coupon));
+            _notyfService.Success($"Mã giảm giá {coupon.Code} đã được áp dụng thành công.");
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
 
     }
 }

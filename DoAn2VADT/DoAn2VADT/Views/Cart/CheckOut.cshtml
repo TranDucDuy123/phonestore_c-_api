@@ -1,4 +1,6 @@
 ﻿@model List<DoAn2VADT.Database.Entities.Cart>
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@using Newtonsoft.Json
 @{
     ViewData["Title"] = "CheckOut";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -21,8 +23,13 @@
             </h4>
             <ul class="list-group mb-3 sticky-top">
                 @{
-                    decimal? total = 0;
-                    decimal? shipfee = Model.Count > 0 ? 30000 : 0;
+                    var couponJson = HttpContextAccessor.HttpContext?.Session.GetString("APPLIED_COUPON");
+                    var coupon = couponJson != null
+                    ? JsonConvert.DeserializeObject<DoAn2VADT.Database.Entities.Coupon>(couponJson)
+                    : null;
+                    decimal discountAmount = 0; // Số tiền giảm dựa trên coupon
+                    decimal? total = 0; // Tổng tiền trước khi áp dụng coupon
+                    decimal? shipfee = Model.Count > 0 ? 30000 : 0; // Phí giao hàng
                 }
                 @foreach (var item in Model)
                 {
@@ -46,14 +53,18 @@
 
                         </li>
                 }
-
-                <li class="list-group-item d-flex justify-content-between bg-light">
-                    <div class="text-success">
-                        <h6 class="my-0">Khuyến mãi</h6>
-                        <small>Nope</small>
-                    </div>
-                    <span class="text-success">Đang cập nhật chương trình</span>
-                </li>       
+                @if (coupon != null)
+                {
+                    // Tính số tiền giảm giá dựa trên coupon (áp dụng tổng tiền giỏ hàng)
+                    discountAmount = (decimal)((total * coupon.Discount) / 100);
+                    <li class="list-group-item d-flex justify-content-between bg-light">
+                        <div class="text-success">
+                            <h6 class="my-0">Khuyến mãi</h6>
+                            <small>@coupon.Code</small>
+                        </div>
+                        <span class="text-success">-@discountAmount.ToString("n0") VNĐ</span>
+                    </li>
+                }
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Phí giao hàng (VNĐ)</span>
                     <span class="text-muted">@(Model.Count > 0 ? "30000" : "")</span>
@@ -61,14 +72,18 @@
                 </li>
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Tổng cộng (VNĐ)</span>
-                    <strong>@((total + shipfee)?.ToString("n0")) VNĐ</strong>
+                    @{
+                        var finalTotal = total - discountAmount + shipfee; // Tổng tiền sau khi áp dụng coupon và phí giao hàng
+                    }
+                    <strong>@finalTotal?.ToString("n0") VNĐ</strong>
                 </li>
-                
             </ul>
         </div>
         <div class="col-md-7 order-md-1">
             <h4 class="mb-3">Thông tin thanh toán</h4>
             <form class="needs-validation" method="post" action="@Url.Action("CheckOut")">
+                <!-- Hidden input to send final total to the server -->
+                <input type="hidden" name="TotalAmount" value="@finalTotal" />
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="firstName">Họ và Tên</label>

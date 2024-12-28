@@ -8,15 +8,7 @@ namespace DoAn2VADT.Database.Entities
     {
         public void Configure(EntityTypeBuilder<Coupon> builder)
         {
-            builder.Property(c => c.Code)
-                   .HasMaxLength(50)
-                   .IsRequired(); // Bắt buộc nhập
-
-            builder.Property(c => c.Discount)
-                   .IsRequired(); // Bắt buộc nhập
-
-            builder.Property(c => c.ExpiryDate)
-                   .HasColumnType("date"); // Kiểu dữ liệu ngày tháng
+           
         }
     }
 }

@@ -23,6 +23,10 @@
         public const string SELLID = "SELLID";
         // Reason
         public const string REFUSEREASON = "Lý do khác";
+
+        // Coupon
+        public const string COUPONSESSION = "COUPON";
+
     }
     public static class StatusConst
     {

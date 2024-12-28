@@ -1,0 +1,103 @@
+﻿@using PagedList.Core.Mvc
+@model PagedList.Core.IPagedList<DoAn2VADT.Database.Entities.Notification>
+
+@{
+    ViewData["Title"] = "Danh sách thông báo";
+    Layout = "~/Areas/Admin/Views/Shared/_GlobalLayout.cshtml";
+}
+
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-controller="Dashboard" asp-action="Index" class="breadcrumb-item">
+                <i class="fa-solid fa-house mr-1"></i>Trang chủ
+            </a>
+            <span class="breadcrumb-item active">Danh sách thông báo</span>
+        </nav>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <!-- Tìm kiếm -->
+        <form method="get">
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="text" name="searchKey" class="form-control" placeholder="Tìm kiếm thông báo" value="@ViewBag.SearchKey" />
+                </div>
+                <div class="col-md-4">
+                    <select name="type" class="form-control" asp-items="ViewBag.NotificationTypes"></select>
+                </div>
+                <div class="col-md-4 text-right">
+                    <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                    <a asp-controller="Notification" asp-action="Create" class="btn btn-success">Thêm thông báo</a>
+                </div>
+            </div>
+        </form>
+
+        <!-- Danh sách thông báo -->
+        <div class="table-responsive mt-3">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Người dùng</th>
+                        <th>Đơn hàng</th>
+                        <th>Loại</th>
+                        <th>Nội dung</th>
+                        <th>Trạng thái</th>
+                        <th>Ngày tạo</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Any())
+                    {
+                        int index = (Model.PageNumber - 1) * Model.PageSize + 1;
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@index</td>
+                                <td>@item.UserId</td>
+                                <td>@item.OrderId</td>
+                                <td>@item.Type</td>
+                                <td>@item.Message</td>
+                                <td>@item.Status</td>
+                                <td>@item.CreatedAt?.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td>
+                                    <a asp-controller="Notification" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Sửa</a>
+                                    <a asp-controller="Notification" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Xóa</a>
+                                </td>
+                            </tr>
+                            index++;
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="8" class="text-center">Không có thông báo nào</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination-container">
+            <nav>
+                <ul class="pagination">
+                    <li class="page-item @(Model.HasPreviousPage ? "" : "disabled")">
+                        <a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber - 1 })">«</a>
+                    </li>
+                    @for (var i = 1; i <= Model.PageCount; i++)
+                    {
+                        <li class="page-item @(Model.PageNumber == i ? "active" : "")">
+                            <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                        </li>
+                    }
+                    <li class="page-item @(Model.HasNextPage ? "" : "disabled")">
+                        <a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber + 1 })">»</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
